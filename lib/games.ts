@@ -8,6 +8,8 @@ export type Game = {
   catchcopy: string;
   description: string;
   image: string;
+  // 看板タイトルで、GIFのように音なしで繰り返す短い動画（6秒）
+  clip?: string;
   platform: string;
   period: string;
   tags: string[];
@@ -25,6 +27,7 @@ export const games: Game[] = [
     description:
       "フライ返しでソーセージを打って、迫ってくる野菜にぶつけるVRアクションです。当たった野菜はソーセージになります。ソーセージを高くトスして、テニスのサーブのように打ち込むところがいちばん気持ちいいところです。いまはリリースに向けて開発を続けています。",
     image: "/games/sausage-smash.jpg",
+    clip: "/clips/sausage-smash.mp4",
     platform: "VR（開発中）",
     period: "開発中",
     tags: ["Unity", "VR", "チーム開発"],
@@ -40,6 +43,7 @@ export const games: Game[] = [
     description:
       "子どもが書いた日記の中を進むホラーゲームです。ノートに線を描いて、「ぼく」をゴールまで連れていきます。絵はすべて手描きです。ホラー実況を見るのは好きだけど、自分で遊ぶのはちょっと怖い。そんな人に最初の一本として遊んでほしくてつくりました。",
     image: "/games/bokunonikki.jpg",
+    clip: "/clips/bokunonikki.mp4",
     platform: "PC（ブラウザ）",
     period: "2025年6月",
     tags: ["Unity", "手描きイラスト", "2D"],
@@ -55,6 +59,7 @@ export const games: Game[] = [
     description:
       "シロとクロを切り替えながら進むアクションパズルです。シロでいるあいだは警察に見つかりませんが、クロになると追いかけられます。わざとクロになって警察をおびき寄せ、その動きを利用して仕掛けを突破します。",
     image: "/games/siro.jpg",
+    clip: "/clips/siro.mp4",
     platform: "PC（ブラウザ）",
     period: "2026年8月",
     tags: ["Unity", "3D", "シェーダー"],

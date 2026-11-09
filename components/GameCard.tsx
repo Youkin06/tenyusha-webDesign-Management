@@ -1,13 +1,19 @@
 import Image from "next/image";
 import type { Game } from "@/lib/games";
+import ClipVideo from "./ClipVideo";
 import styles from "./GameCard.module.css";
 
 // ゲーム1本ぶん。detail を付けると、説明文と制作情報の表まで表示する。
+// 一覧（detail なし）で動画クリップがある作品は、静止画の代わりに動画を流す。
 export default function GameCard({ game, detail = false }: { game: Game; detail?: boolean }) {
   return (
     <article className={styles.card} id={game.slug}>
       <a className={styles.thumb} href={game.play.href} target="_blank" rel="noopener noreferrer" tabIndex={-1}>
-        <Image src={game.image} alt={`${game.title}のゲーム画面`} width={640} height={360} />
+        {!detail && game.clip ? (
+          <ClipVideo src={game.clip} poster={game.image} label={`${game.title}のプレイ映像`} />
+        ) : (
+          <Image src={game.image} alt={`${game.title}のゲーム画面`} width={640} height={360} />
+        )}
       </a>
       <p className={styles.genre}>{game.genre}</p>
       <h3 className={styles.title}>{game.title}</h3>
