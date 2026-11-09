@@ -31,7 +31,7 @@ export default function CtaBand({
           </a>
         ) : (
           <Link className="btn" href={href}>
-            {label} <span className="arrow">→</span>
+            {label}
           </Link>
         )}
       </div>

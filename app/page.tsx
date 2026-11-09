@@ -1,9 +1,7 @@
-import Image from "next/image";
 import Link from "next/link";
 import SkyIsland from "@/components/SkyIsland";
 import GameCard from "@/components/GameCard";
 import CtaBand from "@/components/CtaBand";
-import Logo from "@/components/Logo";
 import SectionHeading from "@/components/SectionHeading";
 import { games } from "@/lib/games";
 import { topics } from "@/lib/topics";
@@ -11,6 +9,8 @@ import styles from "./page.module.css";
 
 export default function Home() {
   const featured = games.filter((g) => g.featured);
+  // ステータス画面の数字は、ゲームのデータから数える（新しい数字はつくらない）
+  const browserCount = games.filter((g) => g.platform.includes("ブラウザ")).length;
 
   return (
     <>
@@ -28,29 +28,21 @@ export default function Home() {
             手ざわりのある遊びをつくるゲームスタジオです。
           </p>
         </div>
-        <span className={styles.scroll} aria-hidden="true">
-          SCROLL
+        {/* 会話ウィンドウの「つづきがあります」の印。下へ読み進められることを示す */}
+        <span className={styles.next} aria-hidden="true">
+          ▼
         </span>
       </section>
 
       <section className={`container ${styles.section}`}>
-        <SectionHeading en="TOPICS" ja="トピックス" />
-        <ul className={styles.topics}>
+        <SectionHeading en="DIARY" ja="制作日誌" />
+        <ul className={styles.diary}>
           {topics.map((t) => (
             <li key={t.title}>
-              <Link href={t.href} className={styles.topic}>
-                <span className={styles.topicThumb}>
-                  {t.image ? (
-                    <Image src={t.image} alt="" width={640} height={360} />
-                  ) : (
-                    <Logo size={72} />
-                  )}
-                </span>
-                <span className={styles.topicMeta}>
-                  <time>{t.date}</time>
-                  <span className={styles.topicCategory}>{t.category}</span>
-                </span>
-                <span className={styles.topicTitle}>{t.title}</span>
+              <Link href={t.href} className={`cursor ${styles.diaryItem}`}>
+                <time className={styles.diaryDate}>{t.date}</time>
+                <span className={styles.diaryCategory}>{t.category}</span>
+                <span className={styles.diaryTitle}>{t.title}</span>
               </Link>
             </li>
           ))}
@@ -62,7 +54,7 @@ export default function Home() {
           <div className={styles.sectionHead}>
             <SectionHeading en="GAMES" ja="看板タイトル" />
             <Link href="/games" className="btn">
-              すべてのゲーム（{games.length}本） <span className="arrow">→</span>
+              すべてのゲーム（{games.length}本）
             </Link>
           </div>
           <div className={styles.gameGrid}>
@@ -83,23 +75,27 @@ export default function Home() {
             まず遊べる形にして、遊びながら面白さを磨いています。
           </p>
           <Link href="/about" className="btn">
-            会社概要を見る <span className="arrow">→</span>
+            会社概要を見る
           </Link>
         </div>
-        <ul className={styles.numbers}>
-          <li>
-            <span className={styles.num}>{games.length}</span>
-            <span className={styles.numLabel}>これまでにつくったタイトル</span>
-          </li>
-          <li>
-            <span className={styles.num}>3</span>
-            <span className={styles.numLabel}>つくれる表現（2D・3D・VR）</span>
-          </li>
-          <li>
-            <span className={styles.num}>2023</span>
-            <span className={styles.numLabel}>はじめてストアに出した年</span>
-          </li>
-        </ul>
+        {/* ゲームのステータス画面に見立てた、天遊社の数字 */}
+        <div className={`status ${styles.stats}`}>
+          <p className={styles.statsTitle}>天遊社のステータス</p>
+          <dl>
+            <div>
+              <dt>つくったゲーム</dt>
+              <dd>{games.length}</dd>
+            </div>
+            <div>
+              <dt>ブラウザで遊べる</dt>
+              <dd>{browserCount}</dd>
+            </div>
+            <div>
+              <dt>はじめてのストア配信</dt>
+              <dd>2023</dd>
+            </div>
+          </dl>
+        </div>
       </section>
 
       <CtaBand

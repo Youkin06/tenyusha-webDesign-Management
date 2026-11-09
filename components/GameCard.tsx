@@ -2,7 +2,7 @@ import Image from "next/image";
 import type { Game } from "@/lib/games";
 import styles from "./GameCard.module.css";
 
-// ゲーム1本ぶん。detail を付けると、説明文や制作情報まで表示する。
+// ゲーム1本ぶん。detail を付けると、説明文と「ステータス画面」風の制作情報まで表示する。
 export default function GameCard({ game, detail = false }: { game: Game; detail?: boolean }) {
   return (
     <article className={styles.card} id={game.slug}>
@@ -12,10 +12,10 @@ export default function GameCard({ game, detail = false }: { game: Game; detail?
       <p className={styles.genre}>{game.genre}</p>
       <h3 className={styles.title}>{game.title}</h3>
       <p className={styles.catch}>{game.catchcopy}</p>
-      {detail && (
+      {detail ? (
         <>
           <p className={styles.description}>{game.description}</p>
-          <dl className={styles.meta}>
+          <dl className={`status ${styles.meta}`}>
             <div>
               <dt>対応</dt>
               <dd>{game.platform}</dd>
@@ -36,10 +36,20 @@ export default function GameCard({ game, detail = false }: { game: Game; detail?
             )}
           </dl>
         </>
+      ) : (
+        // 一覧では、制作期間の1項目だけを小さなステータスで見せる
+        <dl className={`status ${styles.metaShort}`}>
+          <div>
+            <dt>制作</dt>
+            <dd>{game.period}</dd>
+          </div>
+        </dl>
       )}
-      <a className={styles.play} href={game.play.href} target="_blank" rel="noopener noreferrer">
+      <a className={`cursor ${styles.play}`} href={game.play.href} target="_blank" rel="noopener noreferrer">
         {game.play.label}
-        <span className="arrow" aria-hidden="true">↗</span>
+        <span className="arrow" aria-hidden="true">
+          ↗
+        </span>
         <span className={styles.srOnly}>（外部サイトが新しいタブで開きます）</span>
       </a>
     </article>

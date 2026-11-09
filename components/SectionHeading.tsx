@@ -1,23 +1,13 @@
 import styles from "./SectionHeading.module.css";
 
-// セクションの見出し。ドット文字の英語を大きく、日本語を添えて「目次」のように並べる。
-export default function SectionHeading({
-  en,
-  ja,
-  as: Tag = "h2",
-  center = false,
-}: {
-  en: string;
-  ja: string;
-  as?: "h1" | "h2";
-  center?: boolean;
-}) {
+// セクションの見出し。筆文字の日本語を大きく、英字は小さなラベルとして上に添える。
+export default function SectionHeading({ en, ja }: { en: string; ja: string }) {
   return (
-    <div className={center ? `${styles.heading} ${styles.center}` : styles.heading}>
-      <Tag className={styles.en}>
+    <div className={styles.heading}>
+      <p className={styles.label} aria-hidden="true">
         {en}
-        <span className={styles.ja}>{ja}</span>
-      </Tag>
+      </p>
+      <h2 className={styles.title}>{ja}</h2>
     </div>
   );
 }

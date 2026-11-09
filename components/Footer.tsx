@@ -19,13 +19,13 @@ export default function Footer() {
         <nav aria-label="フッターメニュー">
           <ul className={styles.links}>
             <li>
-              <Link href="/">
+              <Link href="/" className="cursor">
                 <span className={styles.en}>TOP</span>トップ
               </Link>
             </li>
             {navItems.map((item) => (
               <li key={item.href}>
-                <Link href={item.href}>
+                <Link href={item.href} className="cursor">
                   <span className={styles.en}>{item.en}</span>
                   {item.label}
                 </Link>

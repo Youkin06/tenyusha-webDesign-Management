@@ -80,12 +80,12 @@ p {
 
 /* 主要ボタン：鉄紺の四角。同じ行動には同じ見た目を使う */
 .btn {
+  position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 14px;
   min-width: 220px;
-  padding: 16px 32px;
+  padding: 16px 40px;
   background: var(--tetsukon);
   color: var(--white);
   font-weight: 700;
@@ -98,10 +98,75 @@ p {
   background: var(--tetsukon-light);
 }
 
-/* ボタンの右端に付ける矢印 */
+/*
+  RPGのメニューカーソル「▶」。
+  カーソルを乗せたとき・キーボードで選んだときに、左側で点滅する。
+  content の「/ ""」は、読み上げソフトに「▶」を読ませないための書き方。
+*/
+.cursor {
+  position: relative;
+}
+
+.cursor::before {
+  content: "▶" / "";
+  position: absolute;
+  left: -1.4em;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.7em;
+  line-height: 1;
+  opacity: 0;
+}
+
+.btn::before {
+  content: "▶" / "";
+  position: absolute;
+  left: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 10px;
+  opacity: 0;
+}
+
+.cursor:hover::before,
+.cursor:focus-visible::before,
+.btn:hover::before,
+.btn:focus-visible::before {
+  opacity: 1;
+  animation: blink 0.9s steps(1) infinite;
+}
+
+/* 今いるページのメニューには、点滅しないカーソルを置いたままにする */
+.cursor[aria-current="page"]::before {
+  opacity: 1;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+/*
+  ゲームのステータス画面の枠。角が1ドットずつ欠けた、ドット絵の四角。
+  上下左右に線を影で描き、角だけ描かないことで段々の角をつくる。
+*/
+.status {
+  margin: 3px;
+  padding: 14px 18px;
+  background: var(--white);
+  box-shadow:
+    0 -3px 0 0 var(--tetsukon),
+    0 3px 0 0 var(--tetsukon),
+    -3px 0 0 0 var(--tetsukon),
+    3px 0 0 0 var(--tetsukon);
+}
+
+/* ボタンの右端に付ける矢印（外部リンクの印） */
 .arrow {
   font-family: var(--font-en), sans-serif;
   font-weight: 400;
+  margin-left: 12px;
 }
 
 :focus-visible {
@@ -115,5 +180,11 @@ p {
   }
   .btn {
     transition: none;
+  }
+  .cursor:hover::before,
+  .cursor:focus-visible::before,
+  .btn:hover::before,
+  .btn:focus-visible::before {
+    animation: none;
   }
 }

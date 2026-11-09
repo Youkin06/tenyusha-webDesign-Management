@@ -53,21 +53,24 @@
   margin-bottom: 20px;
 }
 
+/* 制作情報：ゲームのステータス画面の枠（globals.css の .status） */
 .meta {
-  margin: 0 0 24px;
+  margin: 3px 3px 28px;
   font-size: 13px;
-  border-top: 1px solid var(--line);
 }
 
 .meta div {
   display: flex;
   gap: 16px;
-  padding: 9px 0;
-  border-bottom: 1px solid var(--line);
+  padding: 6px 0;
+}
+
+.meta div + div {
+  border-top: 1px dashed var(--line);
 }
 
 .meta dt {
-  color: var(--kachi);
+  font-weight: 700;
   min-width: 3em;
 }
 
@@ -75,9 +78,30 @@
   margin: 0;
 }
 
+/* 一覧で使う、1項目だけの小さなステータス */
+.metaShort {
+  align-self: flex-start;
+  margin: 3px 3px 24px;
+  padding: 6px 14px;
+  font-size: 12px;
+}
+
+.metaShort div {
+  display: flex;
+  gap: 12px;
+}
+
+.metaShort dt {
+  font-weight: 700;
+}
+
+.metaShort dd {
+  margin: 0;
+}
+
 /* 遊ぶボタン：枠線だけの四角。カーソルを乗せると塗りつぶす */
 .play {
-  margin-top: auto;
+  margin: auto 0 0 1.4em;
   align-self: flex-start;
   display: inline-flex;
   align-items: center;
@@ -95,6 +119,18 @@
   color: var(--white);
 }
 
+/* カードのどこにカーソルを乗せても、遊ぶボタンの左に▶が出る */
+.card:hover .play::before {
+  opacity: 1;
+  animation: blink 0.9s steps(1) infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card:hover .play::before {
+    animation: none;
+  }
+}
+
 .srOnly {
   position: absolute;
   width: 1px;
@@ -108,5 +144,12 @@
   .thumb img,
   .play {
     transition: none;
+  }
+}
+
+/* 点滅（CSSモジュールではアニメーション名がファイルごとに変わるので、ここでも定義する） */
+@keyframes blink {
+  50% {
+    opacity: 0;
   }
 }

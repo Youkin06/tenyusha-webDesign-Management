@@ -42,12 +42,12 @@ export default function Header() {
               <li key={item.href}>
                 <Link
                   href={item.href}
-                  className={item.href === "/contact" ? styles.contact : styles.link}
+                  className={`cursor ${item.href === "/contact" ? styles.contact : styles.link}`}
                   aria-current={pathname === item.href ? "page" : undefined}
                   onClick={() => setOpen(false)}
                 >
-                  <span className={styles.en}>{item.en}</span>
                   <span className={styles.ja}>{item.label}</span>
+                  <span className={styles.en}>{item.en}</span>
                 </Link>
               </li>
             ))}

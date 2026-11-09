@@ -1,4 +1,4 @@
-// トップページの「トピックス」。日付は、作品を実際に公開した年月にそろえている。
+// トップページの「制作日誌」。日付は、作品を実際に公開した年月にそろえている。
 // 天遊社そのものは架空の企業なので、設立のお知らせだけは架空の内容。
 
 export type Topic = {
@@ -6,8 +6,6 @@ export type Topic = {
   category: "お知らせ" | "ゲーム";
   title: string;
   href: string;
-  // 画像がないお知らせには、ロゴを表示する
-  image?: string;
 };
 
 export const topics: Topic[] = [
@@ -22,13 +20,11 @@ export const topics: Topic[] = [
     category: "ゲーム",
     title: "『KamoRogue』をブラウザで公開。鴨池の地下ダンジョンに挑もう",
     href: "/games#kamorogue",
-    image: "/games/kamorogue.jpg",
   },
   {
     date: "2025.07",
     category: "ゲーム",
     title: "『スライムスライス』を公開。スワイプでスライムを斬る3Dカジュアル",
     href: "/games#slimeslice",
-    image: "/games/slimeslice.jpg",
   },
 ];
