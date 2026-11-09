@@ -1,69 +1,93 @@
-import Image from "next/image";
+import Link from "next/link";
+import SkyIsland from "@/components/SkyIsland";
+import GameCard from "@/components/GameCard";
+import CtaBand from "@/components/CtaBand";
+import { games } from "@/lib/games";
 import styles from "./page.module.css";
 
+const strengths = [
+  {
+    en: "HANDMADE",
+    title: "手ざわりのある遊び",
+    text: "ドット絵も3Dモデルも、自分たちの手でつくります。触った瞬間に気持ちいい操作感を大切にしています。",
+  },
+  {
+    en: "IDEA",
+    title: "ひと言で伝わるアイデア",
+    text: "「日記に線を描く」「わざとクロになる」。説明しなくても遊びたくなる、ひとつの発想から作品をつくります。",
+  },
+  {
+    en: "PROTOTYPE",
+    title: "小さく作って、すぐ遊ぶ",
+    text: "2日間のゲームジャムから、半年かけた長編まで。まず遊べる形にして、遊びながら面白さを磨きます。",
+  },
+];
+
 export default function Home() {
+  const featured = games.filter((g) => g.featured);
+
   return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className={styles.intro}>
-          <h1>
-            To get started, edit the{" "}
-            <code className={styles.code}>page.tsx</code> file.
+    <>
+      <section className={styles.hero}>
+        <SkyIsland />
+        <div className={`container ${styles.heroInner}`}>
+          <span className="section-label">TENYUSHA GAME STUDIO</span>
+          <h1 className={styles.heroTitle}>
+            天に遊び、
+            <br />
+            夢をつくる。
           </h1>
-          <p>
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learning
-            </a>{" "}
-            center.
+          <p className={styles.heroLead}>
+            天遊社は、ドット絵から3D・VRまで、
+            <br className={styles.pcOnly} />
+            手ざわりのある遊びをつくるゲームスタジオです。
           </p>
+          <div className={styles.heroActions}>
+            <Link href="/games" className="btn">
+              ゲームを見る <span aria-hidden="true">→</span>
+            </Link>
+            <Link href="/about" className="btn btn-ghost">
+              天遊社について
+            </Link>
+          </div>
         </div>
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className={styles.secondary}
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+      </section>
+
+      <section className={`container ${styles.section}`}>
+        <span className="section-label">PICK UP</span>
+        <h2 className="section-title">看板タイトル</h2>
+        <div className={styles.gameGrid}>
+          {featured.map((game) => (
+            <GameCard key={game.slug} game={game} />
+          ))}
         </div>
-      </main>
-    </div>
+        <div className={styles.more}>
+          <Link href="/games" className="btn btn-ghost">
+            すべてのゲームを見る <span aria-hidden="true">→</span>
+          </Link>
+        </div>
+      </section>
+
+      <section className={`container ${styles.section}`}>
+        <span className="section-label">ABOUT</span>
+        <h2 className="section-title">天遊社が大切にしていること</h2>
+        <ul className={styles.strengths}>
+          {strengths.map((s) => (
+            <li key={s.en}>
+              <span className={styles.strengthEn}>{s.en}</span>
+              <h3 className={styles.strengthTitle}>{s.title}</h3>
+              <p>{s.text}</p>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <CtaBand
+        title="一緒に、遊びをつくりませんか。"
+        text="天遊社では、ゲームをつくる仲間を募集しています。"
+        href="/recruit"
+        label="採用情報を見る"
+      />
+    </>
   );
 }

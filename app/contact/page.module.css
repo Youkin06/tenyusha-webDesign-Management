@@ -1,0 +1,99 @@
+.formBox {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+  padding: 40px;
+  background: var(--night-700);
+  border: 2px solid var(--vermilion);
+  border-radius: var(--radius);
+}
+
+.formTitle {
+  font-size: 28px;
+  margin-bottom: 8px;
+}
+
+.note {
+  margin-top: 16px;
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+.section {
+  margin-top: 96px;
+}
+
+.faq {
+  display: grid;
+  gap: 12px;
+}
+
+.faq details {
+  background: var(--night-700);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 0 20px;
+}
+
+.faq summary {
+  cursor: pointer;
+  padding: 18px 0;
+  font-weight: 700;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.faq summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq summary::after {
+  content: "+";
+  font-family: var(--font-dot), monospace;
+  color: var(--gold);
+}
+
+.faq details[open] summary::after {
+  content: "−";
+}
+
+.faq details p {
+  padding: 0 0 18px;
+  color: var(--text-muted);
+}
+
+.access {
+  margin: 0;
+  border-top: 1px solid var(--line);
+}
+
+.access div {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: 16px;
+  padding: 18px 8px;
+  border-bottom: 1px solid var(--line);
+}
+
+.access dt {
+  color: var(--gold);
+}
+
+.access dd {
+  margin: 0;
+}
+
+@media (max-width: 760px) {
+  .formBox {
+    padding: 28px 20px;
+  }
+
+  .access div {
+    grid-template-columns: 1fr;
+    gap: 2px;
+  }
+}

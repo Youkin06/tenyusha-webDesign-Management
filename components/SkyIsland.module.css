@@ -1,0 +1,10 @@
+.canvas {
+  position: absolute;
+  inset: 0;
+}
+
+/* 低い解像度で描いた画像を、ぼかさずに引き伸ばす（ドットの見た目になる） */
+.canvas canvas {
+  display: block;
+  image-rendering: pixelated;
+}

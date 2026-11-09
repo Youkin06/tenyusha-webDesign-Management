@@ -1,0 +1,157 @@
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(11, 16, 38, 0.82);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--line);
+}
+
+.inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 68px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+}
+
+.name {
+  font-family: var(--font-brush), serif;
+  font-size: 26px;
+  letter-spacing: 0.08em;
+}
+
+.nav ul {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.link,
+.cta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 6px 14px;
+  border-radius: 8px;
+  font-size: 14px;
+  text-decoration: none;
+  line-height: 1.4;
+}
+
+.en {
+  font-family: var(--font-dot), monospace;
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  color: var(--gold);
+}
+
+.link:hover,
+.link[aria-current="page"] {
+  background: var(--night-600);
+}
+
+.cta {
+  background: var(--vermilion);
+  margin-left: 8px;
+}
+
+.cta .en {
+  color: #ffe2c4;
+}
+
+.cta:hover {
+  background: var(--vermilion-dark);
+}
+
+.menuButton {
+  display: none;
+}
+
+/* スマホ：メニューボタンで開閉する縦並びのメニュー */
+@media (max-width: 760px) {
+  .menuButton {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: none;
+    border: 1px solid var(--line);
+    color: var(--text);
+    border-radius: 999px;
+    padding: 8px 14px;
+    font: inherit;
+    font-size: 13px;
+    cursor: pointer;
+  }
+
+  .menuIcon,
+  .menuIcon::before {
+    display: block;
+    width: 16px;
+    height: 2px;
+    background: currentColor;
+    transition: transform 0.2s;
+  }
+
+  .menuIcon {
+    position: relative;
+    transform: translateY(-3px);
+  }
+
+  .menuIcon::before {
+    content: "";
+    position: absolute;
+    top: 6px;
+  }
+
+  .menuIcon[data-open="true"] {
+    transform: rotate(45deg);
+  }
+
+  .menuIcon[data-open="true"]::before {
+    top: 0;
+    transform: rotate(-90deg);
+  }
+
+  .nav {
+    display: none;
+    position: absolute;
+    top: 68px;
+    left: 0;
+    right: 0;
+    background: var(--night-800);
+    border-bottom: 1px solid var(--line);
+    padding: 12px var(--gutter) 20px;
+  }
+
+  .nav[data-open="true"] {
+    display: block;
+  }
+
+  .nav ul {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .link,
+  .cta {
+    flex-direction: row;
+    gap: 12px;
+    padding: 14px 16px;
+    font-size: 16px;
+  }
+
+  .cta {
+    margin: 8px 0 0;
+    justify-content: center;
+  }
+}

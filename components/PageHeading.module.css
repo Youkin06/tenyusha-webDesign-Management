@@ -1,0 +1,27 @@
+/* 夜空の背景に、CSSで描いた四角い星を散らす */
+.heading {
+  padding: 72px 0 56px;
+  margin-bottom: 56px;
+  border-bottom: 1px solid var(--line);
+  background-color: var(--night-900);
+  background-image:
+    linear-gradient(var(--gold), var(--gold)),
+    linear-gradient(#dfe6ff, #dfe6ff),
+    linear-gradient(#dfe6ff, #dfe6ff),
+    linear-gradient(var(--gold), var(--gold)),
+    linear-gradient(#dfe6ff, #dfe6ff),
+    linear-gradient(180deg, var(--night-900), var(--night-700));
+  background-size: 4px 4px, 3px 3px, 3px 3px, 3px 3px, 4px 4px, 100% 100%;
+  background-position: 82% 28%, 64% 70%, 92% 62%, 12% 20%, 40% 14%, 0 0;
+  background-repeat: no-repeat;
+}
+
+.title {
+  font-size: clamp(36px, 7vw, 56px);
+  margin-bottom: 16px;
+}
+
+.lead {
+  color: var(--text-muted);
+  max-width: 640px;
+}

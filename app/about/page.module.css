@@ -1,0 +1,87 @@
+.mission {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 48px;
+  align-items: center;
+}
+
+.mission p + p {
+  margin-top: 16px;
+}
+
+.logo {
+  padding: 24px;
+  background: var(--night-700);
+  border-radius: var(--radius);
+  line-height: 0;
+}
+
+.section {
+  margin-top: 96px;
+}
+
+.table {
+  margin: 0;
+  border-top: 1px solid var(--line);
+}
+
+.table div {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: 16px;
+  padding: 18px 8px;
+  border-bottom: 1px solid var(--line);
+}
+
+.table dt {
+  color: var(--gold);
+}
+
+.table dd {
+  margin: 0;
+}
+
+.timeline {
+  list-style: none;
+  margin: 0;
+  padding: 0 0 0 24px;
+  border-left: 2px solid var(--line);
+}
+
+.timeline li {
+  position: relative;
+  padding: 0 0 28px 20px;
+}
+
+/* 年表の点は、四角いドットにする */
+.timeline li::before {
+  content: "";
+  position: absolute;
+  left: -32px;
+  top: 8px;
+  width: 12px;
+  height: 12px;
+  background: var(--vermilion);
+}
+
+.date {
+  font-family: var(--font-dot), monospace;
+  color: var(--gold);
+  font-size: 14px;
+}
+
+@media (max-width: 760px) {
+  .mission {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .logo {
+    justify-self: start;
+  }
+
+  .table div {
+    grid-template-columns: 1fr;
+    gap: 2px;
+  }
+}
