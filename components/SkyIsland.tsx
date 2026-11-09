@@ -258,6 +258,55 @@ export default function SkyIsland() {
     addCharacter(["/sprites/kamo-run1.png", "/sprites/kamo-run2.png"], [1.2, 0.6, 4], 0.28).catch(() => {});
     addCharacter(["/sprites/depth-player1.png", "/sprites/depth-player2.png"], [-3.4, 0.6, 5], 0.24).catch(() => {});
 
+    // 隠し要素：浮島をクリックすると、その場所から桜の花びらがぱっと散る
+    const BURST_COUNT = 90;
+    const BURST_LIFE = 1.6;
+    const burstPositions = new Float32Array(BURST_COUNT * 3);
+    const burstVelocities = new Float32Array(BURST_COUNT * 3);
+    const burstColors = new Float32Array(BURST_COUNT * 3);
+    for (let i = 0; i < BURST_COUNT; i++) {
+      tint.setHex(pick(SAKURA, i, 6, 0));
+      burstColors.set([tint.r, tint.g, tint.b], i * 3);
+    }
+    const burstGeometry = new THREE.BufferGeometry();
+    const burstAttribute = new THREE.BufferAttribute(burstPositions, 3);
+    burstGeometry.setAttribute("position", burstAttribute);
+    burstGeometry.setAttribute("color", new THREE.BufferAttribute(burstColors, 3));
+    const burstMaterial = new THREE.PointsMaterial({ size: 0.7, vertexColors: true, transparent: true });
+    const burst = new THREE.Points(burstGeometry, burstMaterial);
+    burst.visible = false;
+    scene.add(burst);
+    let burstLife = 0;
+
+    const raycaster = new THREE.Raycaster();
+    const ndc = new THREE.Vector2();
+    // 画面上の位置から、浮島のどこに当たったかを調べる
+    const hitIsland = (e: PointerEvent) => {
+      const rect = renderer.domElement.getBoundingClientRect();
+      ndc.set(((e.clientX - rect.left) / rect.width) * 2 - 1, -((e.clientY - rect.top) / rect.height) * 2 + 1);
+      raycaster.setFromCamera(ndc, camera);
+      return raycaster.intersectObject(island, true)[0];
+    };
+    const onCanvasDown = (e: PointerEvent) => {
+      const hit = hitIsland(e);
+      if (!hit) return;
+      for (let i = 0; i < BURST_COUNT; i++) {
+        burstPositions.set([hit.point.x, hit.point.y, hit.point.z], i * 3);
+        // 上向き寄りの、ばらばらな方向へ飛ばす
+        const angle = Math.random() * Math.PI * 2;
+        const speed = 3 + Math.random() * 6;
+        burstVelocities.set([Math.cos(angle) * speed, 4 + Math.random() * 7, Math.sin(angle) * speed], i * 3);
+      }
+      burstLife = BURST_LIFE;
+      burst.visible = true;
+    };
+    // 島の上にカーソルがあるときだけ、押せることがわかる指のマークにする
+    const onCanvasMove = (e: PointerEvent) => {
+      renderer.domElement.style.cursor = hitIsland(e) ? "pointer" : "";
+    };
+    renderer.domElement.addEventListener("pointerdown", onCanvasDown);
+    renderer.domElement.addEventListener("pointermove", onCanvasMove);
+
     // マウスの位置で、少しだけ視点を動かす
     const pointer = { x: 0, y: 0 };
     const onPointerMove = (e: PointerEvent) => {
@@ -312,6 +361,18 @@ export default function SkyIsland() {
       } else {
         island.rotation.y = -0.5;
       }
+      if (burstLife > 0) {
+        burstLife -= dt;
+        for (let i = 0; i < BURST_COUNT * 3; i += 3) {
+          burstVelocities[i + 1] -= 9 * dt;
+          burstPositions[i] += burstVelocities[i] * dt;
+          burstPositions[i + 1] += burstVelocities[i + 1] * dt;
+          burstPositions[i + 2] += burstVelocities[i + 2] * dt;
+        }
+        burstAttribute.needsUpdate = true;
+        burstMaterial.opacity = Math.max(burstLife / BURST_LIFE, 0);
+        if (burstLife <= 0) burst.visible = false;
+      }
       camera.position.x += (pointer.x * 6 - camera.position.x) * 0.05;
       camera.position.y += (12 - pointer.y * 4 - camera.position.y) * 0.05;
       camera.position.z = baseDistance;
@@ -330,6 +391,8 @@ export default function SkyIsland() {
       resizeObserver.disconnect();
       intersection.disconnect();
       window.removeEventListener("pointermove", onPointerMove);
+      renderer.domElement.removeEventListener("pointerdown", onCanvasDown);
+      renderer.domElement.removeEventListener("pointermove", onCanvasMove);
       island.traverse((obj) => {
         if (obj instanceof THREE.InstancedMesh) obj.geometry.dispose();
       });
@@ -338,7 +401,8 @@ export default function SkyIsland() {
         if (obj instanceof THREE.InstancedMesh) obj.geometry.dispose();
       });
       petalGeometry.dispose();
-      [solidMaterial, glowMaterial, petalMaterial].forEach((m) => m.dispose());
+      burstGeometry.dispose();
+      [solidMaterial, glowMaterial, petalMaterial, burstMaterial].forEach((m) => m.dispose());
       renderer.dispose();
       renderer.domElement.remove();
     };
