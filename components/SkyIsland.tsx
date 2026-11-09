@@ -211,6 +211,8 @@ export default function SkyIsland() {
       tint.setHex(pick(SAKURA, i, 4, 0));
       petalColors.set([tint.r, tint.g, tint.b], i * 3);
     }
+    // 花びらごとの落ちる速さ（毎フレーム計算しないよう、先に決めておく）
+    const petalSpeeds = Float32Array.from({ length: PETAL_COUNT }, (_, i) => hash(i, 5, 0) * 1.8);
     const petalGeometry = new THREE.BufferGeometry();
     const petalAttribute = new THREE.BufferAttribute(petalPositions, 3);
     petalGeometry.setAttribute("position", petalAttribute);
@@ -290,17 +292,19 @@ export default function SkyIsland() {
     const clock = new THREE.Clock();
     let frameId = 0;
     const render = () => {
-      const t = clock.getElapsedTime();
+      // 前のフレームからの経過秒。画面の更新速度（60Hz・120Hzなど）が違っても、同じ速さで動かす
+      const dt = Math.min(clock.getDelta(), 0.1);
+      const t = clock.elapsedTime;
       if (!reduceMotion) {
         island.rotation.y = t * 0.12;
         island.position.y = Math.sin(t * 0.8) * 0.5;
         clouds.rotation.y = -t * 0.02;
         // 花びらは、ゆらゆら揺れながら落ち、下まで行ったら上に戻る
         for (let i = 0; i < PETAL_COUNT; i++) {
-          let y = petalPositions[i * 3 + 1] - 0.03 - hash(i, 5, 0) * 0.03;
+          let y = petalPositions[i * 3 + 1] - (1.8 + petalSpeeds[i]) * dt;
           if (y < AREA.bottom) y = AREA.top;
           petalPositions[i * 3 + 1] = y;
-          petalPositions[i * 3] += Math.sin(t * 0.8 + i) * 0.02;
+          petalPositions[i * 3] += Math.sin(t * 0.8 + i) * 1.2 * dt;
         }
         petalAttribute.needsUpdate = true;
         const frame = Math.floor(t * 6) % 2;

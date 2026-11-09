@@ -21,7 +21,8 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="ja" className={`${body.variable} ${brush.variable} ${en.variable}`}>
+    // data-scroll-behavior：ページ移動のときはスムーズスクロールをせず、すぐ上に戻す（ページ内リンクだけなめらかに動かす）
+    <html lang="ja" data-scroll-behavior="smooth" className={`${body.variable} ${brush.variable} ${en.variable}`}>
       <body>
         {/* 課題の実習表示：すべてのページの冒頭に入れる */}
         <p className="practice-notice">本サイトは講義課題として制作したものです。</p>
