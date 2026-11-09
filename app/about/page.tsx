@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import PageHeading from "@/components/PageHeading";
 import SectionHeading from "@/components/SectionHeading";
-import CtaBand from "@/components/CtaBand";
+import Link from "next/link";
 import Logo from "@/components/Logo";
 import styles from "./page.module.css";
 
@@ -44,12 +44,12 @@ export default function AboutPage() {
           <SectionHeading ja="理念" />
           <p className={styles.missionCopy}>『天に遊ぶ。』</p>
           <p>
-            社名の「天遊」には、空のように果てのない場所で、思いきり遊んでほしいという願いを込めました。
-            ロゴは夜空色の落款（はんこ）に、ドットで描いた三日月と、桜色の星を収めたものです。
-            和の落ち着きと、ゲームのわくわくを一緒に届けたいと考えています。
+            社名の「天遊」は「天に遊ぶ」から取りました。
+            ロゴは夜空色の落款（はんこ）に、ドットで描いた三日月と桜色の星を入れています。
           </p>
           <p>
-            遊んだ人の心が、少しだけ軽くなること。それが、天遊社のゲームづくりのゴールです。
+            つくるのは、ひと言で遊び方が伝わるゲームです。日記に線を描いて進む『ぼくのにっき』、
+            シロとクロを切り替えて警察を誘導する『あなたはシロです。』のように、ひとつの仕掛けを中心に組み立てます。
           </p>
         </div>
       </section>
@@ -78,13 +78,11 @@ export default function AboutPage() {
         </ol>
       </section>
 
-      <CtaBand
-        en="GAMES"
-        title="天遊社のゲームを遊んでみる"
-        text="ブラウザですぐに遊べる作品をそろえています。"
-        href="/games"
-        label="ゲームを見る"
-      />
+      <p className={`container ${styles.next}`}>
+        <Link href="/games" className={`cursor ${styles.nextLink}`}>
+          天遊社のゲームを見る
+        </Link>
+      </p>
     </>
   );
 }

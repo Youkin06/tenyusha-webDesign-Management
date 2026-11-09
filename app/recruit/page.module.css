@@ -1,49 +1,67 @@
-.positions {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 48px;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.positions > li {
-  padding-top: 24px;
-  border-top: 2px solid var(--tetsukon);
-}
-
-.title {
-  font-size: 26px;
-  margin-bottom: 12px;
-}
-
-.positions > li > p:first-of-type {
-  color: var(--kachi);
-}
-
-.skillsLabel {
-  margin-top: 24px;
-  font-size: 13px;
-  color: var(--kachi);
-}
-
-.skills {
-  margin: 6px 0 0;
-  padding-left: 1.2em;
-  font-size: 14px;
+/* 採用の方針を、筆文字で大きく一行に */
+.statement {
+  font-family: var(--font-brush), serif;
+  font-size: clamp(28px, 4.6vw, 44px);
+  line-height: 1.5;
+  letter-spacing: 0.06em;
 }
 
 .section {
-  margin-top: 120px;
+  margin-top: 112px;
 }
 
-.flowLead {
-  margin: -16px 0 48px;
+/* 職種は、1行に1つずつ並べるリスト */
+.positions {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 2px solid var(--tetsukon);
+}
+
+.positions > li {
+  display: grid;
+  grid-template-columns: minmax(0, 15em) minmax(0, 1fr);
+  gap: 12px 48px;
+  padding: 32px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.title {
+  font-size: 20px;
+}
+
+.body > p {
   color: var(--kachi);
+  margin-bottom: 16px;
 }
 
-@media (max-width: 900px) {
-  .positions {
-    grid-template-columns: 1fr;
+.facts {
+  margin: 0;
+  font-size: 14px;
+}
+
+.facts div {
+  display: flex;
+  gap: 16px;
+}
+
+.facts dt {
+  font-weight: 700;
+  min-width: 8em;
+}
+
+.facts dd {
+  margin: 0;
+}
+
+@media (max-width: 760px) {
+  .positions > li {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .facts div {
+    flex-direction: column;
+    gap: 0;
+    margin-bottom: 8px;
   }
 }

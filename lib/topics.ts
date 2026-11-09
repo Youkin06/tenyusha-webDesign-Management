@@ -1,30 +1,36 @@
-// トップページの「制作日誌」。日付は、作品を実際に公開した年月にそろえている。
-// 天遊社そのものは架空の企業なので、設立のお知らせだけは架空の内容。
+// トップページの「制作日誌」。作品ごとの短い制作メモ。
+// 日付は作品を実際に公開した年月、内容は lib/games.ts に書いた事実だけを使う。
 
 export type Topic = {
   date: string;
-  category: "お知らせ" | "ゲーム";
+  category: "公開" | "開発";
   title: string;
   href: string;
 };
 
 export const topics: Topic[] = [
   {
-    date: "2026.04",
-    category: "お知らせ",
-    title: "株式会社天遊社を設立しました（架空）",
-    href: "/about",
+    date: "2026.08",
+    category: "公開",
+    title: "『あなたはシロです。』シロとクロを切り替え、クロのときに追ってくる警察を誘導して仕掛けを突破するアクションパズル。",
+    href: "/games#siro",
   },
   {
     date: "2026.02",
-    category: "ゲーム",
-    title: "『KamoRogue』をブラウザで公開。鴨池の地下ダンジョンに挑もう",
+    category: "公開",
+    title: "『KamoRogue』ステージを進むごとに、盾・ダッシュ・二段ジャンプなどの能力をひとつ選んで強くなるローグライク。",
     href: "/games#kamorogue",
   },
   {
     date: "2025.07",
-    category: "ゲーム",
-    title: "『スライムスライス』を公開。スワイプでスライムを斬る3Dカジュアル",
+    category: "公開",
+    title: "『スライムスライス』斬った瞬間の効果音とエフェクトにこだわった、スワイプで遊ぶ3Dカジュアル。",
     href: "/games#slimeslice",
+  },
+  {
+    date: "2025.06",
+    category: "公開",
+    title: "『ぼくのにっき』日記に直接線を書き込んで主人公を導くホラー。イラストはすべて手描き。",
+    href: "/games#bokunonikki",
   },
 ];

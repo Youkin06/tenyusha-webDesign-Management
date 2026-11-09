@@ -11,6 +11,7 @@ export default function Home() {
   const featured = games.filter((g) => g.featured);
   // ステータス画面の数字は、ゲームのデータから数える（新しい数字はつくらない）
   const browserCount = games.filter((g) => g.platform.includes("ブラウザ")).length;
+  const developingCount = games.filter((g) => g.platform.includes("開発中")).length;
 
   return (
     <>
@@ -70,9 +71,9 @@ export default function Home() {
           <SectionHeading en="ABOUT" ja="天遊社について" />
           <p className={styles.mission}>『天に遊ぶ。』</p>
           <p className={styles.aboutText}>
-            天遊社は、夜空を見上げたときのような、自由で大きな遊び心をゲームで届けるスタジオです。
-            ドット絵も3Dモデルも自分たちの手でつくり、
-            まず遊べる形にしてから、遊びながら面白さを磨いています。
+            天遊社は、2D・3D・VRのゲームをつくるスタジオです。
+            手描きのイラストで描いたホラー『ぼくのにっき』、Python と Pyxel でドット絵からBGMまで制作した『KamoRogue』、
+            フライ返しでソーセージを打ち返すVRアクション『Sausage Smash』。どれも、ひとつの仕掛けから組み立てています。
           </p>
           <Link href="/about" className="btn">
             会社概要を見る
@@ -91,8 +92,8 @@ export default function Home() {
               <dd>{browserCount}</dd>
             </div>
             <div>
-              <dt>はじめてのストア配信</dt>
-              <dd>2023</dd>
+              <dt>開発中</dt>
+              <dd>{developingCount}</dd>
             </div>
           </dl>
         </div>

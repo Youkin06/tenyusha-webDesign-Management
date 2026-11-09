@@ -8,21 +8,25 @@ import styles from "./page.module.css";
 
 export const metadata: Metadata = { title: "採用" };
 
+// 職種ごとに、仕事の内容・関係する実際の作品・応募のときに見せてほしいもの
 const positions = [
   {
     title: "ゲームプログラマー",
-    text: "Unity（C#）でゲームの操作感や仕組みをつくります。触って気持ちいい動きを、一緒に試行錯誤しましょう。",
-    skills: ["Unity・C# での制作経験", "自分で最後までつくった作品"],
+    text: "Unity（C#）で、操作と仕組みをつくります。フライ返しでソーセージを打ち返す動きや、シロとクロの切り替えのような、遊びの中心になる部分を担当します。",
+    works: "Sausage Smash／あなたはシロです。",
+    show: "Unity・C# でつくった作品",
   },
   {
     title: "ドット絵アーティスト",
-    text: "キャラクターや背景のドット絵、アニメーションを担当します。小さなドットで、大きな世界をつくってください。",
-    skills: ["ドット絵の作品", "アニメーション制作の経験（あれば）"],
+    text: "キャラクターや背景のドット絵と、そのアニメーションを担当します。",
+    works: "KamoRogue／DEPTH DIARY",
+    show: "ドット絵の作品（アニメーションがあれば一緒に）",
   },
   {
     title: "サウンドクリエイター",
-    text: "BGMや効果音をつくります。斬る、跳ねる、壊れる。遊びの気持ちよさは、音で決まります。",
-    skills: ["BGM・効果音の作品", "ゲームへの組み込み経験（あれば）"],
+    text: "BGMと効果音を担当します。スライムスライスでは、スライムを斬った瞬間の効果音を、エフェクトと合わせて調整しました。",
+    works: "スライムスライス／KamoRogue",
+    show: "BGM・効果音の作品",
   },
 ];
 
@@ -32,22 +36,32 @@ export default function RecruitPage() {
       <PageHeading
         en="RECRUIT"
         title="採用"
-        lead="天遊社は、つくることが好きな仲間を探しています。経験の長さよりも、自分で最後までつくった作品を大切にします。"
+        lead="天遊社では、ゲームプログラマー、ドット絵アーティスト、サウンドクリエイターを募集しています。"
       />
 
       <section className="container">
+        <p className={styles.statement}>経歴より、最後までつくった作品を見せてください。</p>
+      </section>
+
+      <section className={`container ${styles.section}`}>
         <SectionHeading ja="募集している職種" />
         <ul className={styles.positions}>
           {positions.map((p) => (
             <li key={p.title}>
               <h3 className={styles.title}>{p.title}</h3>
-              <p>{p.text}</p>
-              <p className={styles.skillsLabel}>応募のときに見せてほしいもの</p>
-              <ul className={styles.skills}>
-                {p.skills.map((s) => (
-                  <li key={s}>{s}</li>
-                ))}
-              </ul>
+              <div className={styles.body}>
+                <p>{p.text}</p>
+                <dl className={styles.facts}>
+                  <div>
+                    <dt>関わる作品</dt>
+                    <dd>{p.works}</dd>
+                  </div>
+                  <div>
+                    <dt>見せてほしいもの</dt>
+                    <dd>{p.show}</dd>
+                  </div>
+                </dl>
+              </div>
             </li>
           ))}
         </ul>
@@ -55,9 +69,6 @@ export default function RecruitPage() {
 
       <section className={`container ${styles.section}`}>
         <SectionHeading ja="選考の流れ" />
-        <p className={styles.flowLead}>
-          作品を見ながらお話しすることを大切にしています。最後に、小さな実技課題に取り組んでいただきます。
-        </p>
         <SelectionFlow />
       </section>
 
