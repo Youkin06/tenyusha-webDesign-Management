@@ -6,11 +6,11 @@
   display: flex;
   flex-direction: column;
   gap: 4px;
-  font-family: var(--font-pixel), monospace;
-  font-weight: 700;
-  font-size: clamp(36px, 6vw, 56px);
+  font-family: var(--font-en), sans-serif;
+  font-weight: 800;
+  font-size: clamp(40px, 6.5vw, 64px);
   line-height: 1;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.02em;
 }
 
 /* 日本語の小見出しの前に、桜色の四角いドットを置く */

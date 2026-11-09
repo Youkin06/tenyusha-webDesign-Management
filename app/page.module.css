@@ -1,13 +1,12 @@
-/* ---------- ファーストビュー：夜空の3D浮島 ---------- */
+/* ---------- ファーストビュー：空に浮かぶ3Dの浮島 ---------- */
 .hero {
   position: relative;
   overflow: hidden;
   min-height: clamp(560px, calc(100svh - 100px), 860px);
   display: flex;
   align-items: flex-end;
-  color: var(--white);
-  /* 3Dの夜空と同じ鉄紺から、月のあたりを少し明るくする */
-  background: radial-gradient(ellipse at 70% 30%, var(--tetsukon-light) 0%, var(--tetsukon) 50%, var(--tetsukon-deep) 100%);
+  /* 上は月白のうすい空色、下はページと同じ白へ、境目なくつなぐ */
+  background: linear-gradient(180deg, var(--geppaku) 0%, var(--white) 100%);
 }
 
 .heroInner {
@@ -21,7 +20,7 @@
   font-weight: 400;
   font-size: clamp(44px, 9vw, 92px);
   line-height: 1.35;
-  text-shadow: 0 4px 24px rgba(14, 15, 51, 0.8);
+  text-shadow: 0 0 24px var(--white);
   margin-bottom: 24px;
 }
 
@@ -38,7 +37,7 @@
 
 .heroLead {
   max-width: 520px;
-  text-shadow: 0 2px 12px rgba(14, 15, 51, 0.9);
+  text-shadow: 0 0 12px var(--white);
   animation: rise 1s 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) both;
 }
 
@@ -52,7 +51,7 @@
   align-items: center;
   gap: 12px;
   writing-mode: vertical-rl;
-  font-family: var(--font-pixel), monospace;
+  font-family: var(--font-en), sans-serif;
   font-size: 11px;
   letter-spacing: 0.2em;
 }
@@ -61,7 +60,7 @@
   content: "";
   width: 1px;
   height: 64px;
-  background: var(--white);
+  background: var(--tetsukon);
 }
 
 /* 浮島から立ちのぼるように、下からゆっくり現れる */
@@ -142,7 +141,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-family: var(--font-pixel), monospace;
+  font-family: var(--font-en), sans-serif;
   font-size: 13px;
 }
 
@@ -222,7 +221,7 @@
 }
 
 .num {
-  font-family: var(--font-pixel), monospace;
+  font-family: var(--font-en), sans-serif;
   font-weight: 700;
   font-size: 48px;
   line-height: 1;

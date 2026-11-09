@@ -1,6 +1,6 @@
 "use client";
 
-// トップページの「夜空に浮かぶ3Dドットの浮島」。
+// トップページの「空に浮かぶ3Dドットの浮島」。
 // three.js（ブラウザで3Dを描くライブラリ）で、小さな立方体（ボクセル）を積んで島をつくる。
 // わざと低い解像度で描いてから引き伸ばすことで、ドット絵のような見た目にしている。
 
@@ -26,7 +26,7 @@ function pick(colors: number[], x: number, y: number, z: number) {
 
 const GRASS = [0x3f8f5a, 0x4a9c63, 0x37804f];
 const DIRT = [0x8a5a3c, 0x7a4e34];
-const ROCK = [0x4b5079, 0x565c88, 0x434870];
+const ROCK = [0x6b6f98, 0x777ca6, 0x60648c];
 const SAKURA = [0xf2a7c3, 0xf7bfd3, 0xe58fb0];
 const PINE = [0x2f6e4a, 0x2a6342, 0x357852];
 const VERMILION = 0xe0452b;
@@ -113,9 +113,6 @@ function buildIsland() {
   rock(-12, 3, -5, 1);
   rock(-9, -6, 8, 1);
 
-  // 星のかけら（光るドット）
-  glow.push({ x: 0, y: 11, z: -4, color: 0xe8b64c });
-
   return { solid: [...solid.values()], glow };
 }
 
@@ -169,7 +166,7 @@ export default function SkyIsland() {
     if (!container) return;
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-    // WebGL が使えない端末では、浮島を出さずに夜空の背景だけにする（ページ全体を止めない）
+    // WebGL が使えない端末では、浮島を出さずに空の背景だけにする（ページ全体を止めない）
     let renderer: THREE.WebGLRenderer;
     try {
       renderer = new THREE.WebGLRenderer({ alpha: true, antialias: false });
@@ -182,10 +179,11 @@ export default function SkyIsland() {
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(35, 1, 0.1, 400);
 
-    scene.add(new THREE.HemisphereLight(0x9fb4ff, 0x2a1f3a, 1.6));
-    const moonLight = new THREE.DirectionalLight(0xdbe4ff, 2.2);
-    moonLight.position.set(-12, 20, 14);
-    scene.add(moonLight);
+    // 昼の光：空からのやわらかい光と、左上からの日差し
+    scene.add(new THREE.HemisphereLight(0xffffff, 0xb9b3c9, 2.2));
+    const sunLight = new THREE.DirectionalLight(0xfff4e6, 2.0);
+    sunLight.position.set(-12, 22, 14);
+    scene.add(sunLight);
 
     // 浮島
     const island = new THREE.Group();
@@ -195,24 +193,47 @@ export default function SkyIsland() {
     const { solid, glow } = buildIsland();
     island.add(toMesh(solid, solidMaterial), toMesh(glow, glowMaterial));
 
-    // 星空：四角い点をたくさん散らす
-    const starCount = 1400;
-    const starPositions = new Float32Array(starCount * 3);
-    const starColors = new Float32Array(starCount * 3);
+    // 舞い散る桜の花びら：四角い点をたくさん散らし、少しずつ落とす
+    const PETAL_COUNT = 260;
+    const AREA = { x: 46, top: 26, bottom: -22, z: 24 };
+    const petalPositions = new Float32Array(PETAL_COUNT * 3);
+    const petalColors = new Float32Array(PETAL_COUNT * 3);
     const tint = new THREE.Color();
-    for (let i = 0; i < starCount; i++) {
-      const dir = new THREE.Vector3(hash(i, 1, 0) * 2 - 1, hash(i, 2, 0) * 2 - 1, hash(i, 3, 0) * 2 - 1).normalize();
-      dir.multiplyScalar(70 + hash(i, 4, 0) * 60);
-      starPositions.set([dir.x, dir.y, dir.z], i * 3);
-      tint.setHex(hash(i, 5, 0) < 0.2 ? 0xe8b64c : 0xdfe6ff);
-      starColors.set([tint.r, tint.g, tint.b], i * 3);
+    for (let i = 0; i < PETAL_COUNT; i++) {
+      petalPositions.set(
+        [
+          (hash(i, 1, 0) * 2 - 1) * AREA.x,
+          AREA.bottom + hash(i, 2, 0) * (AREA.top - AREA.bottom),
+          (hash(i, 3, 0) * 2 - 1) * AREA.z,
+        ],
+        i * 3,
+      );
+      tint.setHex(pick(SAKURA, i, 4, 0));
+      petalColors.set([tint.r, tint.g, tint.b], i * 3);
     }
-    const starGeometry = new THREE.BufferGeometry();
-    starGeometry.setAttribute("position", new THREE.BufferAttribute(starPositions, 3));
-    starGeometry.setAttribute("color", new THREE.BufferAttribute(starColors, 3));
-    const starMaterial = new THREE.PointsMaterial({ size: 1.1, vertexColors: true });
-    const stars = new THREE.Points(starGeometry, starMaterial);
-    scene.add(stars);
+    const petalGeometry = new THREE.BufferGeometry();
+    const petalAttribute = new THREE.BufferAttribute(petalPositions, 3);
+    petalGeometry.setAttribute("position", petalAttribute);
+    petalGeometry.setAttribute("color", new THREE.BufferAttribute(petalColors, 3));
+    const petalMaterial = new THREE.PointsMaterial({ size: 0.55, vertexColors: true });
+    scene.add(new THREE.Points(petalGeometry, petalMaterial));
+
+    // 遠くに浮かぶボクセルの雲（島とは別に、ゆっくり流れる）
+    const clouds = new THREE.Group();
+    const cloudVoxels: Voxel[] = [];
+    const cloud = (cx: number, cy: number, cz: number, w: number) => {
+      for (let x = -w; x <= w; x++)
+        for (let y = 0; y <= 2; y++)
+          for (let z = -2; z <= 2; z++) {
+            if (Math.hypot(x / w, (y - 0.3) / 1.6, z / 2.4) > 1 || hash(cx + x, y, z) < 0.15) continue;
+            cloudVoxels.push({ x: cx + x, y: cy + y, z: cz + z, color: y === 0 ? 0xe4e8f2 : 0xffffff });
+          }
+    };
+    cloud(-26, 8, -18, 5);
+    cloud(22, 14, -24, 6);
+    cloud(30, -10, -10, 4);
+    clouds.add(toMesh(cloudVoxels, solidMaterial));
+    scene.add(clouds);
 
     // 島の上を走るキャラクター（2枚のドット絵を交互に表示してアニメーションさせる）
     const characters: { frames: THREE.InstancedMesh[] }[] = [];
@@ -273,7 +294,15 @@ export default function SkyIsland() {
       if (!reduceMotion) {
         island.rotation.y = t * 0.12;
         island.position.y = Math.sin(t * 0.8) * 0.5;
-        stars.rotation.y = t * 0.01;
+        clouds.rotation.y = -t * 0.02;
+        // 花びらは、ゆらゆら揺れながら落ち、下まで行ったら上に戻る
+        for (let i = 0; i < PETAL_COUNT; i++) {
+          let y = petalPositions[i * 3 + 1] - 0.03 - hash(i, 5, 0) * 0.03;
+          if (y < AREA.bottom) y = AREA.top;
+          petalPositions[i * 3 + 1] = y;
+          petalPositions[i * 3] += Math.sin(t * 0.8 + i) * 0.02;
+        }
+        petalAttribute.needsUpdate = true;
         const frame = Math.floor(t * 6) % 2;
         characters.forEach(({ frames }) => frames.forEach((m, i) => (m.visible = i === frame)));
       } else {
@@ -301,8 +330,11 @@ export default function SkyIsland() {
         if (obj instanceof THREE.InstancedMesh) obj.geometry.dispose();
       });
       disposables.forEach((m) => m.geometry.dispose());
-      starGeometry.dispose();
-      [solidMaterial, glowMaterial, starMaterial].forEach((m) => m.dispose());
+      clouds.traverse((obj) => {
+        if (obj instanceof THREE.InstancedMesh) obj.geometry.dispose();
+      });
+      petalGeometry.dispose();
+      [solidMaterial, glowMaterial, petalMaterial].forEach((m) => m.dispose());
       renderer.dispose();
       renderer.domElement.remove();
     };

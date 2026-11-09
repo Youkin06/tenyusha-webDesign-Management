@@ -1,7 +1,7 @@
 import Link from "next/link";
 import styles from "./CtaBand.module.css";
 
-// ページの最後に置く「次の行動」への導線。夜空色の帯に、英字の大見出しと白いボタン。
+// ページの最後に置く「次の行動」への導線。白練の帯に、見出しと鉄紺のボタン。
 export default function CtaBand({
   en,
   title,
@@ -26,12 +26,12 @@ export default function CtaBand({
           <p className={styles.text}>{text}</p>
         </div>
         {external ? (
-          <a className="btn btn-light" href={href} target="_blank" rel="noopener noreferrer">
+          <a className="btn" href={href} target="_blank" rel="noopener noreferrer">
             {label} <span className="arrow">↗</span>
           </a>
         ) : (
-          <Link className="btn btn-light" href={href}>
-            {label} <span className="arrow">&gt;</span>
+          <Link className="btn" href={href}>
+            {label} <span className="arrow">→</span>
           </Link>
         )}
       </div>

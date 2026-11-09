@@ -18,6 +18,21 @@ export type Game = {
 
 export const games: Game[] = [
   {
+    slug: "sausage-smash",
+    title: "Sausage Smash",
+    genre: "VRアクション",
+    catchcopy: "焼いて、トスして、スマッシュ。",
+    description:
+      "フライ返しでソーセージを打ち返し、次々と迫ってくる野菜を迎え撃つVRアクション。ソーセージが当たった野菜はソーセージに変わります。ラケットを振るような手応えと、高くトスして打ち込む爽快感にこだわりました。ハッカソンで生まれ、リリースに向けて開発を続けています。",
+    image: "/games/sausage-smash.jpg",
+    platform: "VR（開発中）",
+    period: "ハッカソン3日間で制作し、現在も開発中",
+    tags: ["Unity", "VR", "チーム開発"],
+    credit: "エンジニア3人によるチーム制作（担当：プレイヤー操作・トス・スマッシュ）",
+    play: { href: "https://youtu.be/YkrrAr-tfY4", label: "プレイ動画を見る" },
+    featured: true,
+  },
+  {
     slug: "bokunonikki",
     title: "ぼくのにっき",
     genre: "2Dアクションホラー",
@@ -59,7 +74,7 @@ export const games: Game[] = [
     tags: ["Python", "Pyxel", "ドット絵"],
     credit: "ボス戦BGM：協力者",
     play: { href: "https://youkin06.github.io/KamoRogue/", label: "ブラウザで遊ぶ" },
-    featured: true,
+    featured: false,
   },
   {
     slug: "depthdiary",

@@ -63,8 +63,8 @@ p {
 
 /* 課題の実習表示（全ページ冒頭） */
 .practice-notice {
-  background: var(--tetsukon);
-  color: var(--geppaku);
+  background: var(--shironeri);
+  color: var(--kachi);
   font-size: 12px;
   text-align: center;
   padding: 6px var(--gutter);
@@ -98,20 +98,10 @@ p {
   background: var(--tetsukon-light);
 }
 
-/* 暗い背景の上で使う、白いボタン */
-.btn-light {
-  background: var(--white);
-  color: var(--tetsukon);
-}
-
-.btn-light:hover {
-  background: var(--geppaku);
-}
-
-/* ボタンの右端に付ける、ドットの矢印 */
+/* ボタンの右端に付ける矢印 */
 .arrow {
-  font-family: var(--font-pixel), monospace;
-  font-size: 12px;
+  font-family: var(--font-en), sans-serif;
+  font-weight: 400;
 }
 
 :focus-visible {

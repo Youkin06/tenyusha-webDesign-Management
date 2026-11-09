@@ -26,12 +26,12 @@
 .breadcrumb li + li::before {
   content: ">";
   margin-right: 8px;
-  font-family: var(--font-pixel), monospace;
+  font-family: var(--font-en), sans-serif;
 }
 
 .breadcrumb a {
   text-decoration: none;
-  font-family: var(--font-pixel), monospace;
+  font-family: var(--font-en), sans-serif;
 }
 
 .title {
@@ -41,10 +41,11 @@
 }
 
 .en {
-  font-family: var(--font-pixel), monospace;
-  font-size: clamp(44px, 9vw, 80px);
+  font-family: var(--font-en), sans-serif;
+  font-weight: 800;
+  font-size: clamp(48px, 10vw, 96px);
   line-height: 1;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.02em;
 }
 
 .ja {

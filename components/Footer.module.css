@@ -59,7 +59,7 @@
 }
 
 .en {
-  font-family: var(--font-pixel), monospace;
+  font-family: var(--font-en), sans-serif;
   font-size: 15px;
   color: var(--white);
 }
@@ -77,7 +77,7 @@
 }
 
 .copy {
-  font-family: var(--font-pixel), monospace;
+  font-family: var(--font-en), sans-serif;
 }
 
 @media (max-width: 600px) {

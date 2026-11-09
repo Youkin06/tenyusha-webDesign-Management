@@ -1,15 +1,14 @@
 .band {
   margin-top: 140px;
   padding: 88px 0;
-  color: var(--white);
-  /* 夜空：鉄紺に、ドットの星をいくつか置く */
-  background-color: var(--tetsukon);
+  /* 白練の帯に、ドットの花びらをいくつか置く */
+  background-color: var(--shironeri);
   background-image:
-    linear-gradient(var(--white), var(--white)),
+    linear-gradient(var(--toki), var(--toki)),
     linear-gradient(var(--toki), var(--toki)),
     linear-gradient(var(--fujinezu), var(--fujinezu)),
-    linear-gradient(var(--white), var(--white));
-  background-size: 4px 4px, 6px 6px, 4px 4px, 3px 3px;
+    linear-gradient(var(--tetsukon), var(--tetsukon));
+  background-size: 8px 8px, 6px 6px, 6px 6px, 4px 4px;
   background-position: 80% 22%, 90% 64%, 66% 80%, 58% 30%;
   background-repeat: no-repeat;
 }
@@ -23,10 +22,11 @@
 }
 
 .en {
-  font-family: var(--font-pixel), monospace;
+  font-family: var(--font-en), sans-serif;
   font-size: 14px;
   letter-spacing: 0.2em;
-  color: var(--toki);
+  font-weight: 600;
+  color: var(--kachi);
   margin-bottom: 12px;
 }
 
@@ -39,5 +39,5 @@
 
 .text {
   max-width: 34em;
-  color: var(--fujinezu);
+  color: var(--kachi);
 }

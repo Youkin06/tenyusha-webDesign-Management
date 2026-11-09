@@ -62,7 +62,7 @@ export default function Home() {
           <div className={styles.sectionHead}>
             <SectionHeading en="GAMES" ja="看板タイトル" />
             <Link href="/games" className="btn">
-              すべてのゲーム（{games.length}本） <span className="arrow">&gt;</span>
+              すべてのゲーム（{games.length}本） <span className="arrow">→</span>
             </Link>
           </div>
           <div className={styles.gameGrid}>
@@ -83,13 +83,13 @@ export default function Home() {
             まず遊べる形にして、遊びながら面白さを磨いています。
           </p>
           <Link href="/about" className="btn">
-            会社概要を見る <span className="arrow">&gt;</span>
+            会社概要を見る <span className="arrow">→</span>
           </Link>
         </div>
         <ul className={styles.numbers}>
           <li>
             <span className={styles.num}>{games.length}</span>
-            <span className={styles.numLabel}>公開したタイトル</span>
+            <span className={styles.numLabel}>これまでにつくったタイトル</span>
           </li>
           <li>
             <span className={styles.num}>3</span>
