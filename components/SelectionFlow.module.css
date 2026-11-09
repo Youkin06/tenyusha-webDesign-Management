@@ -1,86 +1,80 @@
 .flow {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  gap: 28px;
+  gap: 24px;
   list-style: none;
   margin: 0;
   padding: 0;
 }
 
-.flow > li {
+.flow li {
   position: relative;
-  display: flex;
+  padding-top: 32px;
 }
 
-.box {
-  flex: 1;
-  padding: 20px 16px;
-  background: var(--night-700);
-  border: 2px solid var(--line);
-  /* 角をドットのように1段ずつ削る */
-  clip-path: polygon(0 6px, 6px 6px, 6px 0, calc(100% - 6px) 0, calc(100% - 6px) 6px, 100% 6px, 100% calc(100% - 6px), calc(100% - 6px) calc(100% - 6px), calc(100% - 6px) 100%, 6px 100%, 6px calc(100% - 6px), 0 calc(100% - 6px));
-}
-
-.goal {
-  background: var(--vermilion);
-  border-color: var(--vermilion);
-}
-
-/* ステージをつなぐ点線（ドット） */
-.step::after {
+/* 各段階の印：四角いドット */
+.flow li::before {
   content: "";
   position: absolute;
-  top: 50%;
-  right: -28px;
-  width: 28px;
-  height: 4px;
-  background: repeating-linear-gradient(90deg, var(--gold) 0 4px, transparent 4px 8px);
+  top: 0;
+  left: 0;
+  width: 9px;
+  height: 9px;
+  background: var(--geppaku);
 }
 
-.stage {
-  font-family: var(--font-dot), monospace;
+/* 最後（内定）の印だけ桜色にする */
+.flow li:last-child::before {
+  background: var(--toki);
+}
+
+/* 次の段階へつなぐ線 */
+.flow li:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: 4px;
+  left: 17px;
+  right: -16px;
+  height: 1px;
+  background: var(--fujinezu);
+}
+
+.num {
   font-size: 12px;
-  letter-spacing: 0.15em;
-  color: var(--gold);
-}
-
-.goal .stage {
-  color: #ffe2c4;
+  color: var(--fujinezu);
 }
 
 .title {
   font-size: 22px;
-  margin: 4px 0 8px;
+  margin: 2px 0 8px;
 }
 
 .text {
-  font-size: 13px;
-  line-height: 1.7;
-}
-
-.days {
-  display: inline-block;
-  margin-top: 10px;
-  font-size: 12px;
-  border: 1px solid var(--line);
-  border-radius: 999px;
-  padding: 0 10px;
-  color: var(--text-muted);
+  font-size: 14px;
+  color: var(--fujinezu);
+  line-height: 1.8;
 }
 
 @media (max-width: 900px) {
   .flow {
     grid-template-columns: 1fr;
-    gap: 24px;
+    gap: 0;
   }
 
-  .step::after {
-    top: auto;
+  .flow li {
+    padding: 0 0 32px 36px;
+  }
+
+  .flow li::before {
+    top: 8px;
+  }
+
+  .flow li:not(:last-child)::after {
+    top: 25px;
+    left: 4px;
     right: auto;
-    left: 32px;
-    bottom: -24px;
-    width: 4px;
-    height: 24px;
-    background: repeating-linear-gradient(180deg, var(--gold) 0 4px, transparent 4px 8px);
+    bottom: 8px;
+    width: 1px;
+    height: auto;
   }
 }

@@ -29,7 +29,6 @@ export default function ContactPage() {
   return (
     <>
       <PageHeading
-        en="CONTACT"
         title="お問い合わせ"
         lead="ゲームの感想、取材や展示のご相談、採用へのエントリーなど、お気軽にご連絡ください。"
       />
@@ -54,7 +53,6 @@ export default function ContactPage() {
       </section>
 
       <section className={`container ${styles.section}`}>
-        <span className="section-label">FAQ</span>
         <h2 className="section-title">よくある質問</h2>
         <div className={styles.faq}>
           {faqs.map((item) => (
@@ -67,7 +65,6 @@ export default function ContactPage() {
       </section>
 
       <section className={`container ${styles.section}`}>
-        <span className="section-label">ACCESS</span>
         <h2 className="section-title">アクセス</h2>
         <dl className={styles.access}>
           <div>

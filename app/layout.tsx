@@ -1,14 +1,13 @@
 import type { Metadata } from "next";
-import { DotGothic16, Noto_Sans_JP, Yuji_Syuku } from "next/font/google";
+import { Noto_Sans_JP, Yuji_Syuku } from "next/font/google";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import "./globals.css";
 
-// 見出し：筆文字、本文：ゴシック、英字ラベル：ドット文字。
+// 見出し：筆文字、本文：ゴシック。
 // 日本語フォントはファイルが大きいので、先読み（preload）はしない。
 const brush = Yuji_Syuku({ weight: "400", subsets: ["latin"], variable: "--font-brush", preload: false });
 const body = Noto_Sans_JP({ subsets: ["latin"], variable: "--font-body", preload: false });
-const dot = DotGothic16({ weight: "400", subsets: ["latin"], variable: "--font-dot" });
 
 // 課題の実習表示：すべてのページのタイトルの冒頭に【実習】を付ける。
 export const metadata: Metadata = {
@@ -21,7 +20,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="ja" className={`${brush.variable} ${body.variable} ${dot.variable}`}>
+    <html lang="ja" className={`${brush.variable} ${body.variable}`}>
       <body>
         {/* 課題の実習表示：すべてのページの冒頭に入れる */}
         <p className="practice-notice">本サイトは講義課題として制作したものです。</p>

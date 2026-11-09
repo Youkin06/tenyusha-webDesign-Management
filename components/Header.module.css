@@ -2,9 +2,8 @@
   position: sticky;
   top: 0;
   z-index: 50;
-  background: rgba(11, 16, 38, 0.82);
+  background: rgba(23, 24, 75, 0.85);
   backdrop-filter: blur(10px);
-  border-bottom: 1px solid var(--line);
 }
 
 .inner {
@@ -23,54 +22,40 @@
 
 .name {
   font-family: var(--font-brush), serif;
-  font-size: 26px;
-  letter-spacing: 0.08em;
+  font-size: 24px;
+  letter-spacing: 0.1em;
 }
 
 .nav ul {
   display: flex;
-  align-items: center;
-  gap: 8px;
+  gap: 36px;
   list-style: none;
   margin: 0;
   padding: 0;
 }
 
-.link,
-.cta {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 6px 14px;
-  border-radius: 8px;
+.link {
+  position: relative;
+  display: block;
+  padding: 6px 0;
   font-size: 14px;
   text-decoration: none;
-  line-height: 1.4;
 }
 
-.en {
-  font-family: var(--font-dot), monospace;
-  font-size: 10px;
-  letter-spacing: 0.15em;
-  color: var(--gold);
+/* 今いるページには、桜色の小さな点を付ける */
+.link[aria-current="page"]::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -4px;
+  width: 4px;
+  height: 4px;
+  margin-left: -2px;
+  background: var(--toki);
 }
 
-.link:hover,
-.link[aria-current="page"] {
-  background: var(--night-600);
-}
-
-.cta {
-  background: var(--vermilion);
-  margin-left: 8px;
-}
-
-.cta .en {
-  color: #ffe2c4;
-}
-
-.cta:hover {
-  background: var(--vermilion-dark);
+.link:hover {
+  color: #fff;
 }
 
 .menuButton {
@@ -82,12 +67,11 @@
   .menuButton {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 10px;
     background: none;
-    border: 1px solid var(--line);
-    color: var(--text);
-    border-radius: 999px;
-    padding: 8px 14px;
+    border: 0;
+    color: var(--geppaku);
+    padding: 8px 0;
     font: inherit;
     font-size: 13px;
     cursor: pointer;
@@ -96,8 +80,8 @@
   .menuIcon,
   .menuIcon::before {
     display: block;
-    width: 16px;
-    height: 2px;
+    width: 18px;
+    height: 1px;
     background: currentColor;
     transition: transform 0.2s;
   }
@@ -128,9 +112,9 @@
     top: 68px;
     left: 0;
     right: 0;
-    background: var(--night-800);
+    background: var(--tetsukon);
     border-bottom: 1px solid var(--line);
-    padding: 12px var(--gutter) 20px;
+    padding: 8px var(--gutter) 24px;
   }
 
   .nav[data-open="true"] {
@@ -139,19 +123,19 @@
 
   .nav ul {
     flex-direction: column;
-    align-items: stretch;
+    gap: 0;
   }
 
-  .link,
-  .cta {
-    flex-direction: row;
-    gap: 12px;
-    padding: 14px 16px;
+  .link {
+    padding: 16px 0;
     font-size: 16px;
+    border-bottom: 1px solid var(--line);
   }
 
-  .cta {
-    margin: 8px 0 0;
-    justify-content: center;
+  .link[aria-current="page"]::after {
+    left: auto;
+    right: 0;
+    bottom: 50%;
+    margin: 0 0 -2px;
   }
 }

@@ -18,7 +18,7 @@ export default function Header() {
     <header className={styles.header}>
       <div className={`container ${styles.inner}`}>
         <Link href="/" className={styles.brand} onClick={() => setOpen(false)}>
-          <Logo size={36} />
+          <Logo size={32} />
           <span className={styles.name}>天遊社</span>
         </Link>
 
@@ -30,27 +30,23 @@ export default function Header() {
           onClick={() => setOpen(!open)}
         >
           <span className={styles.menuIcon} data-open={open} />
-          <span className={styles.menuText}>{open ? "とじる" : "メニュー"}</span>
+          <span>{open ? "とじる" : "メニュー"}</span>
         </button>
 
         <nav id="global-nav" className={styles.nav} data-open={open} aria-label="メインメニュー">
           <ul>
-            {navItems.map((item) => {
-              const current = pathname === item.href;
-              return (
-                <li key={item.href}>
-                  <Link
-                    href={item.href}
-                    className={item.href === "/contact" ? styles.cta : styles.link}
-                    aria-current={current ? "page" : undefined}
-                    onClick={() => setOpen(false)}
-                  >
-                    <span className={styles.en}>{item.en}</span>
-                    {item.label}
-                  </Link>
-                </li>
-              );
-            })}
+            {navItems.map((item) => (
+              <li key={item.href}>
+                <Link
+                  href={item.href}
+                  className={styles.link}
+                  aria-current={pathname === item.href ? "page" : undefined}
+                  onClick={() => setOpen(false)}
+                >
+                  {item.label}
+                </Link>
+              </li>
+            ))}
           </ul>
         </nav>
       </div>

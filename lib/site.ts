@@ -5,8 +5,8 @@
 export const CONTACT_FORM_URL = "https://docs.google.com/forms/";
 
 export const navItems = [
-  { href: "/games", label: "ゲーム", en: "GAMES" },
-  { href: "/about", label: "会社概要", en: "COMPANY" },
-  { href: "/recruit", label: "採用", en: "RECRUIT" },
-  { href: "/contact", label: "お問い合わせ", en: "CONTACT" },
+  { href: "/games", label: "ゲーム" },
+  { href: "/about", label: "会社概要" },
+  { href: "/recruit", label: "採用" },
+  { href: "/contact", label: "お問い合わせ" },
 ];

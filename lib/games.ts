@@ -27,7 +27,7 @@ export const games: Game[] = [
     image: "/games/bokunonikki.jpg",
     platform: "PC（ブラウザ）",
     period: "2025年6月",
-    tags: ["Unity", "手描きイラスト", "GC甲子園ノミネート"],
+    tags: ["Unity", "手描きイラスト", "2D"],
     credit: "音楽のみ外部制作",
     play: { href: "https://unityroom.com/games/bokunonikki", label: "unityroomで遊ぶ" },
     featured: true,
@@ -71,7 +71,7 @@ export const games: Game[] = [
     image: "/games/depthdiary.jpg",
     platform: "スマートフォン（ブラウザ）",
     period: "2024年3月〜10月",
-    tags: ["Unity", "ドット絵", "GC甲子園U18セミファイナル"],
+    tags: ["Unity", "ドット絵", "2D"],
     credit: "音楽のみ外部制作",
     play: {
       href: "https://play.unity.com/ja/games/962dd261-d374-4db9-83cf-7050148df431/depth-diary",
@@ -104,7 +104,7 @@ export const games: Game[] = [
     image: "/games/circusal.jpg",
     platform: "Android",
     period: "2023年1月〜3月",
-    tags: ["Unity", "イラスト", "Google Playリリース"],
+    tags: ["Unity", "イラスト", "Android"],
     credit: "音楽のみ外部制作",
     play: {
       href: "https://applion.jp/CIRCUSAL/android-com.YOUKINCOMPANY.CIRCUSAL/",

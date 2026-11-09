@@ -2,45 +2,43 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 24px;
+  gap: 24px 48px;
   flex-wrap: wrap;
-  padding: 40px;
-  background: var(--night-700);
-  border: 2px solid var(--vermilion);
-  border-radius: var(--radius);
+  padding: 40px 0;
+  border-top: 1px solid var(--geppaku);
+  border-bottom: 1px solid var(--line);
+}
+
+.formBox p {
+  color: var(--fujinezu);
 }
 
 .formTitle {
-  font-size: 28px;
+  font-size: 30px;
   margin-bottom: 8px;
 }
 
 .note {
   margin-top: 16px;
   font-size: 14px;
-  color: var(--text-muted);
+  color: var(--fujinezu);
 }
 
 .section {
-  margin-top: 96px;
+  margin-top: 120px;
 }
 
 .faq {
-  display: grid;
-  gap: 12px;
+  border-top: 1px solid var(--line);
 }
 
 .faq details {
-  background: var(--night-700);
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  padding: 0 20px;
+  border-bottom: 1px solid var(--line);
 }
 
 .faq summary {
   cursor: pointer;
-  padding: 18px 0;
-  font-weight: 700;
+  padding: 22px 0;
   list-style: none;
   display: flex;
   justify-content: space-between;
@@ -53,8 +51,7 @@
 
 .faq summary::after {
   content: "+";
-  font-family: var(--font-dot), monospace;
-  color: var(--gold);
+  color: var(--fujinezu);
 }
 
 .faq details[open] summary::after {
@@ -62,8 +59,8 @@
 }
 
 .faq details p {
-  padding: 0 0 18px;
-  color: var(--text-muted);
+  padding: 0 0 22px;
+  color: var(--fujinezu);
 }
 
 .access {
@@ -75,12 +72,12 @@
   display: grid;
   grid-template-columns: 180px 1fr;
   gap: 16px;
-  padding: 18px 8px;
+  padding: 20px 0;
   border-bottom: 1px solid var(--line);
 }
 
 .access dt {
-  color: var(--gold);
+  color: var(--fujinezu);
 }
 
 .access dd {
@@ -88,10 +85,6 @@
 }
 
 @media (max-width: 760px) {
-  .formBox {
-    padding: 28px 20px;
-  }
-
   .access div {
     grid-template-columns: 1fr;
     gap: 2px;

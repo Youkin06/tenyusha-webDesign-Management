@@ -11,7 +11,6 @@ export default function GamesPage() {
   return (
     <>
       <PageHeading
-        en="GAMES"
         title="ゲーム"
         lead="天遊社がこれまでにつくったゲームです。ほとんどの作品はブラウザですぐに遊べます。気になったものから、ぜひ遊んでみてください。"
       />

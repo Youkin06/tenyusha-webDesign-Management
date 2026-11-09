@@ -19,8 +19,8 @@ const profile = [
 // これまでの作品づくりの歩み（年月は実際の制作時期）
 const history = [
   { date: "2023年3月", text: "CIRCUSAL を Google Play でリリース。はじめてストアに並んだタイトル" },
-  { date: "2024年10月", text: "DEPTH DIARY が完成。GC甲子園 U18 セミファイナルに進出" },
-  { date: "2025年6月", text: "ぼくのにっき を公開。GC甲子園にノミネート" },
+  { date: "2024年10月", text: "DEPTH DIARY が完成。7か月かけた、はじめての長編" },
+  { date: "2025年6月", text: "ぼくのにっき を公開。イラストをすべて手描きしたホラーゲーム" },
   { date: "2025年7月", text: "スライムスライス を公開。はじめての3Dカジュアルゲーム" },
   { date: "2026年2月", text: "KamoRogue が完成。Python と Pyxel で、ドット絵から音楽までつくる" },
   { date: "2026年4月", text: "天遊社 設立（架空）" },
@@ -30,7 +30,6 @@ export default function AboutPage() {
   return (
     <>
       <PageHeading
-        en="COMPANY"
         title="会社概要"
         lead="天遊社は、夜空を見上げたときのような、自由で大きな遊び心をゲームで届けるために生まれたスタジオです。"
       />
@@ -40,7 +39,6 @@ export default function AboutPage() {
           <Logo size={140} />
         </div>
         <div>
-          <span className="section-label">MISSION</span>
           <h2 className="section-title">天に遊ぶ。</h2>
           <p>
             社名の「天遊」には、空のように果てのない場所で、思いきり遊んでほしいという願いを込めました。
@@ -54,7 +52,6 @@ export default function AboutPage() {
       </section>
 
       <section className={`container ${styles.section}`}>
-        <span className="section-label">PROFILE</span>
         <h2 className="section-title">基本情報</h2>
         <dl className={styles.table}>
           {profile.map((row) => (
@@ -67,7 +64,6 @@ export default function AboutPage() {
       </section>
 
       <section className={`container ${styles.section}`}>
-        <span className="section-label">HISTORY</span>
         <h2 className="section-title">あゆみ</h2>
         <ol className={styles.timeline}>
           {history.map((item) => (
