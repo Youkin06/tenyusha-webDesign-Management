@@ -20,14 +20,15 @@ export default function Footer() {
           <ul className={styles.links}>
             <li>
               <Link href="/" className="cursor">
-                <span className={styles.en}>TOP</span>トップ
+                <span className={styles.ja}>トップ</span>
+                <span className={styles.en}>TOP</span>
               </Link>
             </li>
             {navItems.map((item) => (
               <li key={item.href}>
                 <Link href={item.href} className="cursor">
+                  <span className={styles.ja}>{item.label}</span>
                   <span className={styles.en}>{item.en}</span>
-                  {item.label}
                 </Link>
               </li>
             ))}

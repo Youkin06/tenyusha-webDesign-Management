@@ -59,10 +59,18 @@
   color: var(--white);
 }
 
+/* ヘッダーと同じく、日本語を主役にして英字を小さく添える */
+.ja {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--white);
+}
+
 .en {
   font-family: var(--font-en), sans-serif;
-  font-size: 15px;
-  color: var(--white);
+  font-weight: 600;
+  font-size: 10px;
+  letter-spacing: 0.2em;
 }
 
 .bottom {

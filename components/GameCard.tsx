@@ -2,7 +2,7 @@ import Image from "next/image";
 import type { Game } from "@/lib/games";
 import styles from "./GameCard.module.css";
 
-// ゲーム1本ぶん。detail を付けると、説明文と「ステータス画面」風の制作情報まで表示する。
+// ゲーム1本ぶん。detail を付けると、説明文と制作情報の表まで表示する。
 export default function GameCard({ game, detail = false }: { game: Game; detail?: boolean }) {
   return (
     <article className={styles.card} id={game.slug}>
@@ -15,7 +15,7 @@ export default function GameCard({ game, detail = false }: { game: Game; detail?
       {detail ? (
         <>
           <p className={styles.description}>{game.description}</p>
-          <dl className={`status ${styles.meta}`}>
+          <dl className={styles.meta}>
             <div>
               <dt>対応</dt>
               <dd>{game.platform}</dd>
@@ -37,13 +37,8 @@ export default function GameCard({ game, detail = false }: { game: Game; detail?
           </dl>
         </>
       ) : (
-        // 一覧では、制作期間の1項目だけを小さなステータスで見せる
-        <dl className={`status ${styles.metaShort}`}>
-          <div>
-            <dt>制作</dt>
-            <dd>{game.period}</dd>
-          </div>
-        </dl>
+        // 一覧では、制作時期を1行の文字だけで見せる
+        <p className={styles.metaShort}>制作：{game.period}</p>
       )}
       <a className={`cursor ${styles.play}`} href={game.play.href} target="_blank" rel="noopener noreferrer">
         {game.play.label}

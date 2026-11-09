@@ -24,15 +24,12 @@
   transform: scale(1.04);
 }
 
+/* ジャンルは、塗りのラベルにせず小さな文字だけにする */
 .genre {
-  display: inline-block;
-  align-self: flex-start;
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.08em;
-  padding: 2px 10px;
-  background: var(--tetsukon);
-  color: var(--white);
+  color: var(--kachi);
 }
 
 .title {
@@ -53,20 +50,18 @@
   margin-bottom: 20px;
 }
 
-/* 制作情報：ゲームのステータス画面の枠（globals.css の .status） */
+/* 制作情報：枠で囲まず、表の罫線だけで区切る */
 .meta {
-  margin: 3px 3px 28px;
+  margin: 0 0 28px;
   font-size: 13px;
+  border-top: 1px solid var(--tetsukon);
 }
 
 .meta div {
   display: flex;
   gap: 16px;
-  padding: 6px 0;
-}
-
-.meta div + div {
-  border-top: 1px dashed var(--line);
+  padding: 8px 0;
+  border-bottom: 1px solid var(--line);
 }
 
 .meta dt {
@@ -78,45 +73,24 @@
   margin: 0;
 }
 
-/* 一覧で使う、1項目だけの小さなステータス */
+/* 一覧で使う、制作時期の1行 */
 .metaShort {
-  align-self: flex-start;
-  margin: 3px 3px 24px;
-  padding: 6px 14px;
-  font-size: 12px;
+  font-size: 13px;
+  color: var(--kachi);
+  margin-bottom: 20px;
 }
 
-.metaShort div {
-  display: flex;
-  gap: 12px;
-}
-
-.metaShort dt {
-  font-weight: 700;
-}
-
-.metaShort dd {
-  margin: 0;
-}
-
-/* 遊ぶボタン：枠線だけの四角。カーソルを乗せると塗りつぶす */
+/* 遊ぶリンク：枠で囲まず、下線の文字にする。左に▶カーソルが出る */
 .play {
   margin: auto 0 0 1.4em;
   align-self: flex-start;
   display: inline-flex;
   align-items: center;
-  gap: 12px;
-  padding: 10px 20px;
-  border: 1px solid var(--tetsukon);
+  padding: 2px 0;
+  border-bottom: 1px solid var(--tetsukon);
   font-size: 14px;
   font-weight: 700;
   text-decoration: none;
-  transition: background 0.2s, color 0.2s;
-}
-
-.play:hover {
-  background: var(--tetsukon);
-  color: var(--white);
 }
 
 /* カードのどこにカーソルを乗せても、遊ぶボタンの左に▶が出る */
@@ -141,8 +115,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .thumb img,
-  .play {
+  .thumb img {
     transition: none;
   }
 }
