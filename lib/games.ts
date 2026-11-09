@@ -107,7 +107,7 @@ export const games: Game[] = [
     description:
       "画面をスワイプしてスライムを斬るゲームです。ウェーブが進むたびにスライムが増えていくので、強化をひとつずつ選びながら耐えていきます。斬ったときの音とエフェクトは何度も調整しました。",
     image: "/games/slimeslice.jpg",
-    platform: "PC（ブラウザ）",
+    platform: "PC・スマートフォン（ブラウザ）",
     period: "2025年7月",
     tags: ["Unity", "Blender", "3D"],
     credit: "サウンド：協力クリエイター",

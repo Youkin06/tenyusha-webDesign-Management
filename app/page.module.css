@@ -263,3 +263,17 @@
     opacity: 0;
   }
 }
+
+/* ページの最後：お問い合わせへの1行の導線 */
+.contactLine {
+  margin-top: 56px;
+  color: var(--kachi);
+}
+
+.contactLink {
+  margin: 0 0.2em 0 1.6em;
+  font-weight: 700;
+  color: var(--tetsukon);
+  text-decoration: none;
+  border-bottom: 1px solid var(--tetsukon);
+}

@@ -26,6 +26,12 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       <body>
         {/* 課題の実習表示：すべてのページの冒頭に入れる */}
         <p className="practice-notice">本サイトは講義課題として制作したものです。</p>
+        {/* JavaScript が動かないときは、スマホでもメニューを開いたまま表示する */}
+        <noscript>
+          <style>
+            {".menu-toggle{display:none!important}.header-inner{flex-wrap:wrap;height:auto!important;padding-bottom:8px}.global-nav{display:block!important;position:static!important;height:auto!important;width:100%;padding:0!important}"}
+          </style>
+        </noscript>
         <Header />
         <main>{children}</main>
         <Footer />

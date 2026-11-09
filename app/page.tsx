@@ -107,6 +107,14 @@ export default function Home() {
         href="/recruit"
         label="採用情報を見る"
       />
+
+      <p className={`container ${styles.contactLine}`}>
+        ゲームの感想や、取材・展示のご相談は
+        <Link href="/contact" className={`cursor ${styles.contactLink}`}>
+          お問い合わせ
+        </Link>
+        から。
+      </p>
     </>
   );
 }

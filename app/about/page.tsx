@@ -10,7 +10,7 @@ export const metadata: Metadata = { title: "会社概要" };
 // 「架空」と書いてある項目は、課題のために設定した架空の情報。
 const profile = [
   { label: "社名", value: "株式会社天遊社（Tenyusha Inc.）※架空の企業です" },
-  { label: "設立", value: "2026年4月（架空）" },
+  { label: "設立", value: "2023年1月（架空）" },
   { label: "代表", value: "Yohei Yaoi" },
   { label: "所在地", value: "〒000-0000 天遊県星見市月見町1-1（架空）" },
   { label: "事業内容", value: "自社ゲームの企画・開発・配信" },
@@ -19,12 +19,13 @@ const profile = [
 
 // これまでの作品づくりの歩み（年月は実際の制作時期）
 const history = [
-  { date: "2023年3月", text: "CIRCUSAL を Google Play でリリース。はじめてストアに並んだタイトル" },
+  { date: "2023年1月", text: "天遊社 設立（架空）" },
+  { date: "2023年2月", text: "CIRCUSAL を Google Play でリリース。はじめてストアに並んだタイトル" },
   { date: "2024年10月", text: "スマートフォン向けアドベンチャー DEPTH DIARY をリリース" },
   { date: "2025年6月", text: "ぼくのにっき を unityroom で公開。イラストはすべて手描き" },
   { date: "2025年7月", text: "3Dカジュアルゲーム スライムスライス を公開" },
   { date: "2026年2月", text: "KamoRogue をブラウザで公開。Python と Pyxel で制作し、ドット絵とBGMの多くも自分たちで用意した" },
-  { date: "2026年4月", text: "天遊社 設立（架空）" },
+  { date: "2026年8月", text: "あなたはシロです。 を unityroom で公開" },
 ];
 
 export default function AboutPage() {
@@ -33,7 +34,7 @@ export default function AboutPage() {
       <PageHeading
         en="COMPANY"
         title="会社概要"
-        lead="天遊社は2026年4月にできたゲームスタジオです（架空）。ここでは社名の由来と、これまでの歩みを紹介します。"
+        lead="天遊社は2023年1月にできたゲームスタジオです（架空）。ここでは社名の由来と、これまでの歩みを紹介します。"
       />
 
       <section className={`container ${styles.mission}`}>

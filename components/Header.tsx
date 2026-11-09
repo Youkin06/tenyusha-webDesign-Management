@@ -16,7 +16,7 @@ export default function Header() {
 
   return (
     <header className={styles.header}>
-      <div className={styles.inner}>
+      <div className={`header-inner ${styles.inner}`}>
         <Link href="/" className={styles.brand} onClick={() => setOpen(false)}>
           <Logo size={34} />
           <span className={styles.name}>
@@ -27,7 +27,7 @@ export default function Header() {
 
         <button
           type="button"
-          className={styles.menuButton}
+          className={`menu-toggle ${styles.menuButton}`}
           aria-expanded={open}
           aria-controls="global-nav"
           onClick={() => setOpen(!open)}
@@ -36,7 +36,7 @@ export default function Header() {
           <span className={styles.menuText}>{open ? "CLOSE" : "MENU"}</span>
         </button>
 
-        <nav id="global-nav" className={styles.nav} data-open={open} aria-label="メインメニュー">
+        <nav id="global-nav" className={`global-nav ${styles.nav}`} data-open={open} aria-label="メインメニュー">
           <ul>
             {navItems.map((item) => (
               <li key={item.href}>
