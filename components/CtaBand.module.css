@@ -1,16 +1,21 @@
+/* 中央寄せにせず、見出しは左、ボタンは右下に置く */
 .band {
   margin-top: 120px;
   padding-top: 64px;
   border-top: 1px solid var(--line);
-  text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 32px 48px;
 }
 
 .title {
-  font-size: clamp(26px, 4.5vw, 36px);
+  font-size: clamp(30px, 5.5vw, 48px);
   margin-bottom: 12px;
 }
 
 .text {
+  max-width: 34em;
   color: var(--fujinezu);
-  margin-bottom: 32px;
 }

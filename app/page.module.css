@@ -24,10 +24,22 @@
   margin-bottom: 20px;
 }
 
+/* 見出しは1行ずつ、2行目は少し右へずらして筆の流れを出す */
+.rise {
+  display: block;
+  animation: rise 1.2s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+.rise + .rise {
+  padding-left: 1em;
+  animation-delay: 0.35s;
+}
+
 .heroLead {
   max-width: 520px;
   text-shadow: 0 2px 12px rgba(14, 15, 51, 0.9);
   margin-bottom: 36px;
+  animation: rise 1s 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) both;
 }
 
 .heroActions {
@@ -35,10 +47,36 @@
   flex-wrap: wrap;
   align-items: center;
   gap: 32px;
+  animation: rise 1s 1s cubic-bezier(0.2, 0.7, 0.2, 1) both;
 }
 
+/* 浮島から立ちのぼるように、下からゆっくり現れる */
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rise,
+  .heroLead,
+  .heroActions {
+    animation: none;
+  }
+}
+
+/* 余白はそろえず、ヒーロー直後の看板タイトルは近く、価値観の前は大きく空ける */
 .section {
-  margin-top: 120px;
+  margin-top: 96px;
+}
+
+.section.values {
+  margin-top: 200px;
 }
 
 .sectionHead {
@@ -48,10 +86,20 @@
   gap: 16px;
 }
 
+/* 1本目を大きく、残りを右に縦に並べる。同じ大きさのカード3枚にしない */
 .gameGrid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 40px 32px;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+  gap: 40px 40px;
+}
+
+.gameGrid > :first-child {
+  grid-row: span 2;
+  align-self: start;
+}
+
+.gameGrid > :first-child h3 {
+  font-size: clamp(32px, 4vw, 44px);
 }
 
 .values {
@@ -93,7 +141,15 @@
 
 @media (max-width: 900px) {
   .gameGrid {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .gameGrid > :first-child {
+    grid-row: auto;
+  }
+
+  .section.values {
+    margin-top: 140px;
   }
 
   .values {

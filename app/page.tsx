@@ -28,10 +28,10 @@ export default function Home() {
       <section className={styles.hero}>
         <SkyIsland />
         <div className={`container ${styles.heroInner}`}>
+          {/* 読み込み時に一度だけ、1行ずつ浮かび上がる */}
           <h1 className={styles.heroTitle}>
-            天に遊び、
-            <br />
-            夢をつくる。
+            <span className={styles.rise}>天に遊び、</span>
+            <span className={styles.rise}>夢をつくる。</span>
           </h1>
           <p className={styles.heroLead}>
             天遊社は、ドット絵から3D・VRまで、
@@ -43,7 +43,7 @@ export default function Home() {
               ゲームを見る <span aria-hidden="true">→</span>
             </Link>
             <Link href="/about" className="text-link">
-              天遊社について <span aria-hidden="true">→</span>
+              天遊社について
             </Link>
           </div>
         </div>
@@ -53,7 +53,7 @@ export default function Home() {
         <div className={styles.sectionHead}>
           <h2 className="section-title">看板タイトル</h2>
           <Link href="/games" className="text-link">
-            すべてのゲーム <span aria-hidden="true">→</span>
+            すべてのゲーム（{games.length}本）
           </Link>
         </div>
         <div className={styles.gameGrid}>
@@ -79,8 +79,8 @@ export default function Home() {
       </section>
 
       <CtaBand
-        title="一緒に、遊びをつくりませんか。"
-        text="天遊社では、ゲームをつくる仲間を募集しています。"
+        title="次の一本を、一緒に。"
+        text="ゲームジャムに出たことがある人、ドット絵を描いている人。天遊社は、つくる仲間を探しています。"
         href="/recruit"
         label="採用情報を見る"
       />

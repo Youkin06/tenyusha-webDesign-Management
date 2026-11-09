@@ -169,7 +169,13 @@ export default function SkyIsland() {
     if (!container) return;
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-    const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: false });
+    // WebGL が使えない端末では、浮島を出さずに夜空の背景だけにする（ページ全体を止めない）
+    let renderer: THREE.WebGLRenderer;
+    try {
+      renderer = new THREE.WebGLRenderer({ alpha: true, antialias: false });
+    } catch {
+      return;
+    }
     renderer.setPixelRatio(1 / DOT_SIZE);
     container.appendChild(renderer.domElement);
 
