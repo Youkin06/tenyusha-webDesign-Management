@@ -36,7 +36,7 @@
 }
 
 .heroLead {
-  max-width: 520px;
+  max-width: 640px;
   text-shadow: 0 0 12px var(--white);
   animation: rise 1s 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) both;
 }

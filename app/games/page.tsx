@@ -12,7 +12,7 @@ export default function GamesPage() {
       <PageHeading
         en="GAMES"
         title="ゲーム"
-        lead="天遊社がこれまでにつくったゲームです。ほとんどの作品はブラウザですぐに遊べます。気になったものから、ぜひ遊んでみてください。"
+        lead="天遊社がこれまでにつくったゲームの一覧です。「unityroomで遊ぶ」「ブラウザで遊ぶ」などと書いてあるものは、インストールなしでそのまま遊べます。"
       />
       <div className="container">
         <div className={styles.grid}>

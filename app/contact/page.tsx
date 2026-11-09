@@ -46,7 +46,7 @@ export default function ContactPage() {
             </p>
           </div>
           <a className="btn" href={CONTACT_FORM_URL} target="_blank" rel="noopener noreferrer">
-            フォームを開く <span aria-hidden="true">↗</span>
+            フォームを開く <span className="arrow" aria-hidden="true">↗</span>
           </a>
         </div>
         <p className={styles.note}>

@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     default: "【実習】天遊社 | 天に遊び、夢をつくるゲームスタジオ",
     template: "【実習】%s | 天遊社",
   },
-  description: "天遊社（架空の企業）は、ドット絵から3D・VRまで、手ざわりのある遊びをつくるゲームスタジオです。",
+  description: "天遊社（架空の企業）は、ドット絵の2Dアクションから3D、VRまでつくっているゲームスタジオです。ほとんどの作品はブラウザで遊べます。",
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {

@@ -12,19 +12,19 @@ export const metadata: Metadata = { title: "採用" };
 const positions = [
   {
     title: "ゲームプログラマー",
-    text: "Unity（C#）で、操作と仕組みをつくります。フライ返しでソーセージを打ち返す動きや、シロとクロの切り替えのような、遊びの中心になる部分を担当します。",
+    text: "Unity（C#）で、ゲームの仕組みやキャラクターの動きをつくります。ジャンプの高さや入力を受け付けるタイミングなど、細かい操作感の調整も仕事のうちです。",
     works: "Sausage Smash／あなたはシロです。",
     show: "Unity・C# でつくった作品",
   },
   {
     title: "ドット絵アーティスト",
-    text: "キャラクターや背景のドット絵と、そのアニメーションを担当します。",
+    text: "キャラクターや背景のドット絵と、そのアニメーションを担当します。KamoRogue や DEPTH DIARY のような2D作品が中心です。",
     works: "KamoRogue／DEPTH DIARY",
     show: "ドット絵の作品（アニメーションがあれば一緒に）",
   },
   {
     title: "サウンドクリエイター",
-    text: "BGMと効果音を担当します。スライムスライスでは、スライムを斬った瞬間の効果音を、エフェクトと合わせて調整しました。",
+    text: "BGMと効果音をつくります。これまで音楽は外部の方にお願いすることが多かったので、社内で音を担当できる人を探しています。",
     works: "スライムスライス／KamoRogue",
     show: "BGM・効果音の作品",
   },
@@ -36,11 +36,15 @@ export default function RecruitPage() {
       <PageHeading
         en="RECRUIT"
         title="採用"
-        lead="天遊社では、ゲームプログラマー、ドット絵アーティスト、サウンドクリエイターを募集しています。"
+        lead="天遊社では、一緒にゲームをつくる人を募集しています。完成していれば、小さな作品でもかまいません。"
       />
 
       <section className="container">
-        <p className={styles.statement}>経歴より、最後までつくった作品を見せてください。</p>
+        <p className={styles.statement}>
+          経歴より、
+          <br />
+          最後までつくった作品を見せてください。
+        </p>
       </section>
 
       <section className={`container ${styles.section}`}>
@@ -69,6 +73,9 @@ export default function RecruitPage() {
 
       <section className={`container ${styles.section}`}>
         <SectionHeading ja="選考の流れ" />
+        <p className={styles.flowLead}>
+          面接では、送ってもらった作品を実際に遊びながら話を聞きます。最後に、小さな実技課題があります。
+        </p>
         <SelectionFlow />
       </section>
 

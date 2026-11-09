@@ -1,7 +1,8 @@
 /* 採用の方針を、筆文字で大きく一行に */
 .statement {
   font-family: var(--font-brush), serif;
-  font-size: clamp(28px, 4.6vw, 44px);
+  font-size: clamp(24px, 4.2vw, 40px);
+  text-wrap: balance;
   line-height: 1.5;
   letter-spacing: 0.06em;
 }
@@ -64,4 +65,9 @@
     gap: 0;
     margin-bottom: 8px;
   }
+}
+
+.flowLead {
+  color: var(--kachi);
+  margin-bottom: 24px;
 }

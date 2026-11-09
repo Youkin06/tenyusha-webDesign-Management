@@ -24,9 +24,11 @@ export default function Home() {
             <span className={styles.rise}>夢をつくる。</span>
           </h1>
           <p className={styles.heroLead}>
-            天遊社は、ドット絵から3D・VRまで、
+            天遊社は、ドット絵の2Dアクションから3D、VRまで
             <br className={styles.pcOnly} />
-            手ざわりのある遊びをつくるゲームスタジオです。
+            つくっているゲームスタジオです。
+            <br className={styles.pcOnly} />
+            ほとんどの作品はブラウザで遊べます。
           </p>
         </div>
         {/* 会話ウィンドウの「つづきがあります」の印。下へ読み進められることを示す */}
@@ -71,9 +73,8 @@ export default function Home() {
           <SectionHeading en="ABOUT" ja="天遊社について" />
           <p className={styles.mission}>『天に遊ぶ。』</p>
           <p className={styles.aboutText}>
-            天遊社は、2D・3D・VRのゲームをつくるスタジオです。
-            手描きのイラストで描いたホラー『ぼくのにっき』、Python と Pyxel でドット絵からBGMまで制作した『KamoRogue』、
-            フライ返しでソーセージを打ち返すVRアクション『Sausage Smash』。どれも、ひとつの仕掛けから組み立てています。
+            天遊社では、絵も3Dモデルもプログラムも基本は自分たちでつくり、
+            まず遊べるものを用意してから、何度も遊んで直していきます。
           </p>
           <Link href="/about" className="btn">
             会社概要を見る
@@ -101,8 +102,8 @@ export default function Home() {
 
       <CtaBand
         en="RECRUIT"
-        title="次の一本を、一緒に。"
-        text="ドット絵を描く人、操作の気持ちよさにこだわる人。天遊社は、一緒にゲームをつくる仲間を探しています。"
+        title="一緒にゲームをつくりませんか"
+        text="ゲームプログラマー、ドット絵アーティスト、サウンドクリエイターを募集しています。"
         href="/recruit"
         label="採用情報を見る"
       />
