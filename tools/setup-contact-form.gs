@@ -7,13 +7,30 @@
  *   3. 上のメニューで関数「setupContactForm」を選び、「実行」を押す（初回だけ権限の許可を求められる）
  *   4. 実行ログに出る「回答用URL」を確認する
  *
- * 対象のフォームは、Dia で開いていた「無題のフォーム」（下の FORM_ID）。
+ * 対象のフォームは、Google ドライブにある「天遊社お問い合わせフォーム」。
+ * 見つからなければ、新しく作る。
  * すでにある質問はいったん消してから作り直すので、何度実行しても同じ形になる。
  */
-const FORM_ID = "1BE9Z5SX4t0DjQmbFW6vdEOY2VZ5RI6dJPvTJ4uLIc5g";
+const FORM_NAMES = ["天遊社お問い合わせフォーム", "天遊社 お問い合わせフォーム"];
+
+/** ドライブから名前でフォームを探す。なければ新しく作る。 */
+function findOrCreateForm() {
+  for (const name of FORM_NAMES) {
+    const files = DriveApp.getFilesByName(name);
+    while (files.hasNext()) {
+      const file = files.next();
+      if (file.getMimeType() === MimeType.GOOGLE_FORMS) {
+        Logger.log("見つけたフォーム: " + name);
+        return FormApp.openById(file.getId());
+      }
+    }
+  }
+  Logger.log("同じ名前のフォームが見つからなかったので、新しく作ります");
+  return FormApp.create(FORM_NAMES[0]);
+}
 
 function setupContactForm() {
-  const form = FormApp.openById(FORM_ID);
+  const form = findOrCreateForm();
 
   // 作り直す前に、今ある質問をすべて消す
   form.getItems().forEach((item) => form.deleteItem(item));
