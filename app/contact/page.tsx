@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import PageHeading from "@/components/PageHeading";
 import SectionHeading from "@/components/SectionHeading";
-import { CONTACT_FORM_URL } from "@/lib/site";
+import { CONTACT_FORM_EMBED_URL, CONTACT_FORM_URL } from "@/lib/site";
 import styles from "./page.module.css";
 
 export const metadata: Metadata = { title: "お問い合わせ" };
@@ -36,19 +36,20 @@ export default function ContactPage() {
       />
 
       <section className="container">
-        <div className={styles.formBox}>
-          <div>
-            <h2 className={styles.formTitle}>お問い合わせフォーム</h2>
-            <p>
-              お問い合わせは Google フォームで受け付けています。
-              <br />
-              お名前、ご用件、内容をご記入ください。
-            </p>
-          </div>
-          <a className="btn" href={CONTACT_FORM_URL} target="_blank" rel="noopener noreferrer">
-            フォームを開く <span className="arrow" aria-hidden="true">↗</span>
-          </a>
+        <div className={styles.formHead}>
+          <h2 className={styles.formTitle}>お問い合わせフォーム</h2>
+          <p>
+            ご用件と内容を書いて送ってください。表示されないときは、
+            <a href={CONTACT_FORM_URL} target="_blank" rel="noopener noreferrer">
+              新しいタブでフォームを開く
+            </a>
+            こともできます。
+          </p>
         </div>
+        {/* Google フォームをページの中に埋め込む（外部サービス） */}
+        <iframe className={styles.form} src={CONTACT_FORM_EMBED_URL} title="天遊社 お問い合わせフォーム" loading="lazy">
+          読み込んでいます…
+        </iframe>
         <p className={styles.note}>
           先にゲームを遊んでみたい方は、<Link href="/games">ゲームページ</Link>からどうぞ。
         </p>
