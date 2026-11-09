@@ -1,24 +1,13 @@
+import Image from "next/image";
 import Link from "next/link";
 import SkyIsland from "@/components/SkyIsland";
 import GameCard from "@/components/GameCard";
 import CtaBand from "@/components/CtaBand";
+import Logo from "@/components/Logo";
+import SectionHeading from "@/components/SectionHeading";
 import { games } from "@/lib/games";
+import { topics } from "@/lib/topics";
 import styles from "./page.module.css";
-
-const values = [
-  {
-    title: "手ざわりのある遊び",
-    text: "ドット絵も3Dモデルも、自分たちの手でつくります。触った瞬間に気持ちいい操作感を大切にしています。",
-  },
-  {
-    title: "ひと言で伝わるアイデア",
-    text: "「日記に線を描く」「わざとクロになる」。説明しなくても遊びたくなる、ひとつの発想から作品をつくります。",
-  },
-  {
-    title: "小さく作って、すぐ遊ぶ",
-    text: "2日間のゲームジャムから、半年かけた長編まで。まず遊べる形にして、遊びながら面白さを磨きます。",
-  },
-];
 
 export default function Home() {
   const featured = games.filter((g) => g.featured);
@@ -38,47 +27,83 @@ export default function Home() {
             <br className={styles.pcOnly} />
             手ざわりのある遊びをつくるゲームスタジオです。
           </p>
-          <div className={styles.heroActions}>
+        </div>
+        <span className={styles.scroll} aria-hidden="true">
+          SCROLL
+        </span>
+      </section>
+
+      <section className={`container ${styles.section}`}>
+        <SectionHeading en="TOPICS" ja="トピックス" />
+        <ul className={styles.topics}>
+          {topics.map((t) => (
+            <li key={t.title}>
+              <Link href={t.href} className={styles.topic}>
+                <span className={styles.topicThumb}>
+                  {t.image ? (
+                    <Image src={t.image} alt="" width={640} height={360} />
+                  ) : (
+                    <Logo size={72} />
+                  )}
+                </span>
+                <span className={styles.topicMeta}>
+                  <time>{t.date}</time>
+                  <span className={styles.topicCategory}>{t.category}</span>
+                </span>
+                <span className={styles.topicTitle}>{t.title}</span>
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <section className={styles.gamesBand}>
+        <div className="container">
+          <div className={styles.sectionHead}>
+            <SectionHeading en="GAMES" ja="看板タイトル" />
             <Link href="/games" className="btn">
-              ゲームを見る <span aria-hidden="true">→</span>
+              すべてのゲーム（{games.length}本） <span className="arrow">&gt;</span>
             </Link>
-            <Link href="/about" className="text-link">
-              天遊社について
-            </Link>
+          </div>
+          <div className={styles.gameGrid}>
+            {featured.map((game) => (
+              <GameCard key={game.slug} game={game} />
+            ))}
           </div>
         </div>
       </section>
 
-      <section className={`container ${styles.section}`}>
-        <div className={styles.sectionHead}>
-          <h2 className="section-title">看板タイトル</h2>
-          <Link href="/games" className="text-link">
-            すべてのゲーム（{games.length}本）
+      <section className={`container ${styles.section} ${styles.about}`}>
+        <div>
+          <SectionHeading en="ABOUT" ja="天遊社について" />
+          <p className={styles.mission}>『天に遊ぶ。』</p>
+          <p className={styles.aboutText}>
+            天遊社は、夜空を見上げたときのような、自由で大きな遊び心をゲームで届けるスタジオです。
+            ドット絵も3Dモデルも自分たちの手でつくり、2日間のゲームジャムから半年かけた長編まで、
+            まず遊べる形にして、遊びながら面白さを磨いています。
+          </p>
+          <Link href="/about" className="btn">
+            会社概要を見る <span className="arrow">&gt;</span>
           </Link>
         </div>
-        <div className={styles.gameGrid}>
-          {featured.map((game) => (
-            <GameCard key={game.slug} game={game} />
-          ))}
-        </div>
-      </section>
-
-      <section className={`container ${styles.section} ${styles.values}`}>
-        <h2 className="section-title">大切にしていること</h2>
-        <ol className={styles.valueList}>
-          {values.map((v, i) => (
-            <li key={v.title}>
-              <span className={styles.valueNum}>{["一", "二", "三"][i]}</span>
-              <div>
-                <h3 className={styles.valueTitle}>{v.title}</h3>
-                <p>{v.text}</p>
-              </div>
-            </li>
-          ))}
-        </ol>
+        <ul className={styles.numbers}>
+          <li>
+            <span className={styles.num}>{games.length}</span>
+            <span className={styles.numLabel}>公開したタイトル</span>
+          </li>
+          <li>
+            <span className={styles.num}>3</span>
+            <span className={styles.numLabel}>つくれる表現（2D・3D・VR）</span>
+          </li>
+          <li>
+            <span className={styles.num}>2023</span>
+            <span className={styles.numLabel}>はじめてストアに出した年</span>
+          </li>
+        </ul>
       </section>
 
       <CtaBand
+        en="RECRUIT"
         title="次の一本を、一緒に。"
         text="ゲームジャムに出たことがある人、ドット絵を描いている人。天遊社は、つくる仲間を探しています。"
         href="/recruit"

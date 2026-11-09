@@ -9,7 +9,7 @@
 
 .positions > li {
   padding-top: 24px;
-  border-top: 1px solid var(--geppaku);
+  border-top: 2px solid var(--tetsukon);
 }
 
 .title {
@@ -18,13 +18,13 @@
 }
 
 .positions > li > p:first-of-type {
-  color: var(--fujinezu);
+  color: var(--kachi);
 }
 
 .skillsLabel {
   margin-top: 24px;
   font-size: 13px;
-  color: var(--fujinezu);
+  color: var(--kachi);
 }
 
 .skills {
@@ -39,7 +39,7 @@
 
 .flowLead {
   margin: -16px 0 48px;
-  color: var(--fujinezu);
+  color: var(--kachi);
 }
 
 @media (max-width: 900px) {

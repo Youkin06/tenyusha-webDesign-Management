@@ -16,10 +16,13 @@ export default function Header() {
 
   return (
     <header className={styles.header}>
-      <div className={`container ${styles.inner}`}>
+      <div className={styles.inner}>
         <Link href="/" className={styles.brand} onClick={() => setOpen(false)}>
-          <Logo size={32} />
-          <span className={styles.name}>天遊社</span>
+          <Logo size={34} />
+          <span className={styles.name}>
+            天遊社
+            <span className={styles.nameEn}>TENYUSHA</span>
+          </span>
         </Link>
 
         <button
@@ -30,7 +33,7 @@ export default function Header() {
           onClick={() => setOpen(!open)}
         >
           <span className={styles.menuIcon} data-open={open} />
-          <span>{open ? "とじる" : "メニュー"}</span>
+          <span className={styles.menuText}>{open ? "CLOSE" : "MENU"}</span>
         </button>
 
         <nav id="global-nav" className={styles.nav} data-open={open} aria-label="メインメニュー">
@@ -39,11 +42,12 @@ export default function Header() {
               <li key={item.href}>
                 <Link
                   href={item.href}
-                  className={styles.link}
+                  className={item.href === "/contact" ? styles.contact : styles.link}
                   aria-current={pathname === item.href ? "page" : undefined}
                   onClick={() => setOpen(false)}
                 >
-                  {item.label}
+                  <span className={styles.en}>{item.en}</span>
+                  <span className={styles.ja}>{item.label}</span>
                 </Link>
               </li>
             ))}

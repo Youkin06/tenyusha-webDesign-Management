@@ -1,4 +1,4 @@
-// 天遊社のロゴマーク：月白の落款（はんこ）の中に、ドットで描いた三日月と星。
+// 天遊社のロゴマーク：鉄紺の落款（はんこ）の中に、ドットで描いた三日月と星。
 // ドットの位置は円の計算で決めているので、サイズを変えても形が崩れない。
 
 const GRID = 12;
@@ -24,9 +24,9 @@ for (let y = 0; y < GRID; y++) {
 export default function Logo({ size = 40 }: { size?: number }) {
   return (
     <svg width={size} height={size} viewBox="-1 -1 14 14" role="img" aria-label="天遊社のロゴ" shapeRendering="crispEdges">
-      <rect x="-1" y="-1" width="14" height="14" rx="1" fill="var(--geppaku)" />
+      <rect x="-1" y="-1" width="14" height="14" rx="1" fill="var(--tetsukon)" />
       {pixels.map(([x, y]) => (
-        <rect key={`${x}-${y}`} x={x} y={y} width="1" height="1" fill="var(--tetsukon)" />
+        <rect key={`${x}-${y}`} x={x} y={y} width="1" height="1" fill={STAR.has(`${x},${y}`) ? "var(--toki)" : "var(--white)"} />
       ))}
     </svg>
   );

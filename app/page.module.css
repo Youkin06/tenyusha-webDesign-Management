@@ -1,27 +1,28 @@
+/* ---------- ファーストビュー：夜空の3D浮島 ---------- */
 .hero {
   position: relative;
   overflow: hidden;
   min-height: clamp(560px, calc(100svh - 100px), 860px);
   display: flex;
   align-items: flex-end;
+  color: var(--white);
   /* 3Dの夜空と同じ鉄紺から、月のあたりを少し明るくする */
   background: radial-gradient(ellipse at 70% 30%, var(--tetsukon-light) 0%, var(--tetsukon) 50%, var(--tetsukon-deep) 100%);
 }
 
 .heroInner {
   position: relative;
-  padding-bottom: 72px;
+  padding-bottom: 88px;
   pointer-events: none;
 }
 
-.heroInner a {
-  pointer-events: auto;
-}
-
 .heroTitle {
-  font-size: clamp(44px, 9vw, 88px);
+  font-family: var(--font-brush), serif;
+  font-weight: 400;
+  font-size: clamp(44px, 9vw, 92px);
+  line-height: 1.35;
   text-shadow: 0 4px 24px rgba(14, 15, 51, 0.8);
-  margin-bottom: 20px;
+  margin-bottom: 24px;
 }
 
 /* 見出しは1行ずつ、2行目は少し右へずらして筆の流れを出す */
@@ -38,16 +39,29 @@
 .heroLead {
   max-width: 520px;
   text-shadow: 0 2px 12px rgba(14, 15, 51, 0.9);
-  margin-bottom: 36px;
   animation: rise 1s 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) both;
 }
 
-.heroActions {
+/* 右下の縦書き「SCROLL」と、下へ伸びる線 */
+.scroll {
+  position: absolute;
+  right: 32px;
+  bottom: 0;
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
   align-items: center;
-  gap: 32px;
-  animation: rise 1s 1s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  gap: 12px;
+  writing-mode: vertical-rl;
+  font-family: var(--font-pixel), monospace;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+}
+
+.scroll::after {
+  content: "";
+  width: 1px;
+  height: 64px;
+  background: var(--white);
 }
 
 /* 浮島から立ちのぼるように、下からゆっくり現れる */
@@ -64,33 +78,103 @@
 
 @media (prefers-reduced-motion: reduce) {
   .rise,
-  .heroLead,
-  .heroActions {
+  .heroLead {
     animation: none;
   }
 }
 
-/* 余白はそろえず、ヒーロー直後の看板タイトルは近く、価値観の前は大きく空ける */
+/* ---------- 共通 ---------- */
 .section {
-  margin-top: 96px;
-}
-
-.section.values {
-  margin-top: 200px;
+  margin-top: 120px;
 }
 
 .sectionHead {
   display: flex;
   justify-content: space-between;
-  align-items: baseline;
-  gap: 16px;
+  align-items: flex-end;
+  gap: 16px 32px;
+  flex-wrap: wrap;
+  margin-bottom: 48px;
+}
+
+.sectionHead > div {
+  margin-bottom: 0;
+}
+
+/* ---------- トピックス ---------- */
+.topics {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.topic {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  text-decoration: none;
+}
+
+.topicThumb {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: var(--shironeri);
+}
+
+.topicThumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s;
+}
+
+.topic:hover .topicThumb img {
+  transform: scale(1.04);
+}
+
+.topicMeta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--font-pixel), monospace;
+  font-size: 13px;
+}
+
+.topicCategory {
+  font-family: var(--font-body), sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 1px 10px;
+  border: 1px solid var(--tetsukon);
+}
+
+.topicTitle {
+  font-weight: 700;
+  line-height: 1.7;
+}
+
+.topic:hover .topicTitle {
+  text-decoration: underline;
+}
+
+/* ---------- 看板タイトル（白練の帯） ---------- */
+.gamesBand {
+  margin-top: 140px;
+  padding: 100px 0 112px;
+  background: var(--shironeri);
 }
 
 /* 1本目を大きく、残りを右に縦に並べる。同じ大きさのカード3枚にしない */
 .gameGrid {
   display: grid;
   grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
-  gap: 40px 40px;
+  gap: 48px 40px;
 }
 
 .gameGrid > :first-child {
@@ -99,47 +183,63 @@
 }
 
 .gameGrid > :first-child h3 {
-  font-size: clamp(32px, 4vw, 44px);
+  font-size: clamp(34px, 4vw, 48px);
 }
 
-.values {
+/* ---------- 天遊社について ---------- */
+.about {
   display: grid;
-  grid-template-columns: 1fr 1.6fr;
-  gap: 48px;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 64px;
+  align-items: center;
 }
 
-.valueList {
+.mission {
+  font-family: var(--font-brush), serif;
+  font-size: clamp(28px, 4vw, 40px);
+  margin-bottom: 20px;
+}
+
+.aboutText {
+  color: var(--kachi);
+  margin-bottom: 40px;
+}
+
+/* 数字で見る天遊社 */
+.numbers {
   list-style: none;
   margin: 0;
   padding: 0;
-  border-top: 1px solid var(--line);
+  border-top: 2px solid var(--tetsukon);
 }
 
-.valueList li {
-  display: grid;
-  grid-template-columns: 56px 1fr;
-  gap: 16px;
-  padding: 28px 0;
+.numbers li {
+  display: flex;
+  align-items: baseline;
+  gap: 20px;
+  padding: 24px 0;
   border-bottom: 1px solid var(--line);
 }
 
-.valueNum {
-  font-family: var(--font-brush), serif;
-  font-size: 32px;
-  line-height: 1.2;
-  color: var(--fujinezu);
+.num {
+  font-family: var(--font-pixel), monospace;
+  font-weight: 700;
+  font-size: 48px;
+  line-height: 1;
+  min-width: 3.2em;
 }
 
-.valueTitle {
-  font-size: 24px;
-  margin-bottom: 8px;
-}
-
-.valueList p {
-  color: var(--fujinezu);
+.numLabel {
+  font-size: 14px;
+  color: var(--kachi);
 }
 
 @media (max-width: 900px) {
+  .topics {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
   .gameGrid {
     grid-template-columns: minmax(0, 1fr);
   }
@@ -148,13 +248,9 @@
     grid-row: auto;
   }
 
-  .section.values {
-    margin-top: 140px;
-  }
-
-  .values {
+  .about {
     grid-template-columns: 1fr;
-    gap: 0;
+    gap: 56px;
   }
 }
 
@@ -164,6 +260,20 @@
   }
 
   .heroInner {
-    padding-bottom: 48px;
+    padding-bottom: 56px;
+  }
+
+  .scroll {
+    right: 12px;
+  }
+
+  .gamesBand {
+    padding: 72px 0 80px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .topicThumb img {
+    transition: none;
   }
 }

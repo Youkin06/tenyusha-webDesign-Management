@@ -8,7 +8,9 @@ export default function Footer() {
     <footer className={styles.footer}>
       <div className={`container ${styles.inner}`}>
         <div className={styles.brand}>
-          <Logo size={44} />
+          <span className={styles.logo}>
+            <Logo size={48} />
+          </span>
           <div>
             <p className={styles.name}>天遊社</p>
             <p className={styles.tagline}>天に遊び、夢をつくる。</p>
@@ -17,20 +19,25 @@ export default function Footer() {
         <nav aria-label="フッターメニュー">
           <ul className={styles.links}>
             <li>
-              <Link href="/">トップ</Link>
+              <Link href="/">
+                <span className={styles.en}>TOP</span>トップ
+              </Link>
             </li>
             {navItems.map((item) => (
               <li key={item.href}>
-                <Link href={item.href}>{item.label}</Link>
+                <Link href={item.href}>
+                  <span className={styles.en}>{item.en}</span>
+                  {item.label}
+                </Link>
               </li>
             ))}
           </ul>
         </nav>
       </div>
-      <p className={styles.note}>
-        天遊社は講義課題のための架空の企業です。掲載しているゲームは制作者本人の作品です。
-        <br />© 2026 Tenyusha (fictional)
-      </p>
+      <div className={`container ${styles.bottom}`}>
+        <p>天遊社は講義課題のための架空の企業です。掲載しているゲームは制作者本人の作品です。</p>
+        <p className={styles.copy}>© 2026 TENYUSHA (FICTIONAL)</p>
+      </div>
     </footer>
   );
 }

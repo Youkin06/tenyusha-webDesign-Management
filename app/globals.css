@@ -1,21 +1,24 @@
 /*
-  配色：日本の伝統色から、3Dの浮島（夜空・桜・灯籠）に合う色を選ぶ。
+  配色：白をベースに、日本の伝統色で文字とアクセントをつくる。
   面積の比率はおよそ 70（ベース）: 25（メイン）: 5（アクセント）。
-    ベース     鉄紺 #17184b … 夜空。背景のほとんど
-    メイン     月白 #eaf4fc … 月の光。文字と主要ボタン
-    アクセント 鴇色 #f4b3c2 … 島の桜。現在地の印や、ごく小さな強調だけに使う
-  そのほかは、ベースとメインの濃淡（藤鼠など）でつくり、色数を増やさない。
+    ベース     白 / 白練 #f3f3f2 … ページの背景。白練は区切りの帯
+    メイン     鉄紺 #17184b       … 文字、ボタン、ヒーローとフッターの夜空
+    アクセント 鴇色 #f4b3c2       … 島の桜の色。見出しの小さな四角など、ごく一部だけ
+  文字の濃淡は、鉄紺と褐色（かちいろ）でつくり、色数を増やさない。
 */
 :root {
+  --white: #ffffff;
+  --shironeri: #f3f3f2;
   --tetsukon: #17184b;
   --tetsukon-deep: #0e0f33;
   --tetsukon-light: #222463;
+  --kachi: #4d4c61;
+  --line: #dcdce4;
+  --toki: #f4b3c2;
   --geppaku: #eaf4fc;
   --fujinezu: #a6a5c4;
-  --line: rgba(166, 165, 196, 0.28);
-  --toki: #f4b3c2;
 
-  --content-width: 1080px;
+  --content-width: 1120px;
   --gutter: 20px;
 }
 
@@ -29,8 +32,8 @@ html {
 
 body {
   margin: 0;
-  background: var(--tetsukon);
-  color: var(--geppaku);
+  background: var(--white);
+  color: var(--tetsukon);
   font-family: var(--font-body), sans-serif;
   line-height: 1.9;
   letter-spacing: 0.04em;
@@ -49,9 +52,8 @@ img {
 h1,
 h2,
 h3 {
-  font-family: var(--font-brush), serif;
-  font-weight: 400;
-  line-height: 1.4;
+  font-weight: 700;
+  line-height: 1.45;
   margin: 0;
 }
 
@@ -61,8 +63,8 @@ p {
 
 /* 課題の実習表示（全ページ冒頭） */
 .practice-notice {
-  background: var(--tetsukon-deep);
-  color: var(--fujinezu);
+  background: var(--tetsukon);
+  color: var(--geppaku);
   font-size: 12px;
   text-align: center;
   padding: 6px var(--gutter);
@@ -76,45 +78,44 @@ p {
   padding: 0 var(--gutter);
 }
 
-.section-title {
-  font-size: clamp(28px, 5vw, 40px);
-  margin-bottom: 40px;
-}
-
-/* 主要ボタン：月白の四角。同じ行動には同じ見た目を使う */
+/* 主要ボタン：鉄紺の四角。同じ行動には同じ見た目を使う */
 .btn {
   display: inline-flex;
   align-items: center;
-  gap: 12px;
-  padding: 14px 32px;
-  background: var(--geppaku);
-  color: var(--tetsukon);
+  justify-content: center;
+  gap: 14px;
+  min-width: 220px;
+  padding: 16px 32px;
+  background: var(--tetsukon);
+  color: var(--white);
   font-weight: 700;
+  font-size: 15px;
   text-decoration: none;
   transition: background 0.2s;
 }
 
 .btn:hover {
-  background: #fff;
+  background: var(--tetsukon-light);
 }
 
-/* 文字だけのリンク：下線で示す */
-.text-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  padding: 4px 0;
-  text-decoration: none;
-  border-bottom: 1px solid var(--fujinezu);
-  transition: border-color 0.2s;
+/* 暗い背景の上で使う、白いボタン */
+.btn-light {
+  background: var(--white);
+  color: var(--tetsukon);
 }
 
-.text-link:hover {
-  border-color: var(--toki);
+.btn-light:hover {
+  background: var(--geppaku);
+}
+
+/* ボタンの右端に付ける、ドットの矢印 */
+.arrow {
+  font-family: var(--font-pixel), monospace;
+  font-size: 12px;
 }
 
 :focus-visible {
-  outline: 2px solid var(--toki);
+  outline: 2px solid var(--tetsukon);
   outline-offset: 3px;
 }
 
@@ -122,8 +123,7 @@ p {
   html {
     scroll-behavior: auto;
   }
-  .btn,
-  .text-link {
+  .btn {
     transition: none;
   }
 }

@@ -1,14 +1,14 @@
 .footer {
-  background: var(--tetsukon-deep);
-  padding: 56px 0 28px;
-  margin-top: 120px;
+  background: var(--tetsukon);
+  color: var(--white);
+  padding: 72px 0 32px;
 }
 
 .inner {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  gap: 32px;
+  align-items: flex-start;
+  gap: 40px;
   flex-wrap: wrap;
 }
 
@@ -18,10 +18,17 @@
   gap: 16px;
 }
 
+/* 夜空色の地に溶けないよう、ロゴの外側に細い月白の線を引く */
+.logo {
+  line-height: 0;
+  outline: 1px solid var(--fujinezu);
+}
+
 .name {
   font-family: var(--font-brush), serif;
-  font-size: 26px;
+  font-size: 28px;
   line-height: 1.2;
+  letter-spacing: 0.1em;
 }
 
 .tagline {
@@ -30,28 +37,51 @@
 }
 
 .links {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px 28px;
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  gap: 16px 48px;
   list-style: none;
   margin: 0;
   padding: 0;
-  font-size: 14px;
+  font-size: 12px;
 }
 
 .links a {
+  display: flex;
+  flex-direction: column;
   text-decoration: none;
   color: var(--fujinezu);
+  line-height: 1.5;
 }
 
 .links a:hover {
-  color: var(--geppaku);
+  color: var(--white);
 }
 
-.note {
-  margin-top: 48px;
-  padding: 0 var(--gutter);
-  text-align: center;
+.en {
+  font-family: var(--font-pixel), monospace;
+  font-size: 15px;
+  color: var(--white);
+}
+
+.bottom {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px 24px;
+  flex-wrap: wrap;
+  margin-top: 56px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(166, 165, 196, 0.3);
   font-size: 12px;
   color: var(--fujinezu);
+}
+
+.copy {
+  font-family: var(--font-pixel), monospace;
+}
+
+@media (max-width: 600px) {
+  .links {
+    grid-template-columns: repeat(2, auto);
+  }
 }

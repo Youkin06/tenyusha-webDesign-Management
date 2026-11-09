@@ -1,17 +1,39 @@
-/* 中央寄せにせず、見出しは左、ボタンは右下に置く */
 .band {
-  margin-top: 120px;
-  padding-top: 64px;
-  border-top: 1px solid var(--line);
+  margin-top: 140px;
+  padding: 88px 0;
+  color: var(--white);
+  /* 夜空：鉄紺に、ドットの星をいくつか置く */
+  background-color: var(--tetsukon);
+  background-image:
+    linear-gradient(var(--white), var(--white)),
+    linear-gradient(var(--toki), var(--toki)),
+    linear-gradient(var(--fujinezu), var(--fujinezu)),
+    linear-gradient(var(--white), var(--white));
+  background-size: 4px 4px, 6px 6px, 4px 4px, 3px 3px;
+  background-position: 80% 22%, 90% 64%, 66% 80%, 58% 30%;
+  background-repeat: no-repeat;
+}
+
+.inner {
   display: flex;
-  flex-wrap: wrap;
   justify-content: space-between;
   align-items: flex-end;
   gap: 32px 48px;
+  flex-wrap: wrap;
+}
+
+.en {
+  font-family: var(--font-pixel), monospace;
+  font-size: 14px;
+  letter-spacing: 0.2em;
+  color: var(--toki);
+  margin-bottom: 12px;
 }
 
 .title {
-  font-size: clamp(30px, 5.5vw, 48px);
+  font-family: var(--font-brush), serif;
+  font-weight: 400;
+  font-size: clamp(30px, 5vw, 46px);
   margin-bottom: 12px;
 }
 

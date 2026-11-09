@@ -6,7 +6,7 @@
 }
 
 .mission p {
-  color: var(--fujinezu);
+  color: var(--kachi);
 }
 
 .mission p + p {
@@ -35,7 +35,7 @@
 }
 
 .table dt {
-  color: var(--fujinezu);
+  color: var(--kachi);
 }
 
 .table dd {
@@ -62,12 +62,12 @@
   top: 9px;
   width: 9px;
   height: 9px;
-  background: var(--geppaku);
+  background: var(--tetsukon);
 }
 
 .date {
   font-size: 14px;
-  color: var(--fujinezu);
+  color: var(--kachi);
 }
 
 @media (max-width: 760px) {
@@ -80,4 +80,11 @@
     grid-template-columns: 1fr;
     gap: 2px;
   }
+}
+
+.mission .missionCopy {
+  color: var(--tetsukon);
+  font-family: var(--font-brush), serif;
+  font-size: clamp(30px, 5vw, 44px);
+  margin: -16px 0 20px;
 }

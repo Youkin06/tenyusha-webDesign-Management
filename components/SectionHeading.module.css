@@ -1,0 +1,38 @@
+.heading {
+  margin-bottom: 48px;
+}
+
+.en {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-family: var(--font-pixel), monospace;
+  font-weight: 700;
+  font-size: clamp(36px, 6vw, 56px);
+  line-height: 1;
+  letter-spacing: 0.04em;
+}
+
+/* 日本語の小見出しの前に、桜色の四角いドットを置く */
+.ja {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 14px;
+  font-family: var(--font-body), sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+}
+
+.ja::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  background: var(--toki);
+}
+
+.center .en {
+  align-items: center;
+  text-align: center;
+}

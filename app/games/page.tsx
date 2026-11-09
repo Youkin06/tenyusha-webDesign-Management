@@ -11,6 +11,7 @@ export default function GamesPage() {
   return (
     <>
       <PageHeading
+        en="GAMES"
         title="ゲーム"
         lead="天遊社がこれまでにつくったゲームです。ほとんどの作品はブラウザですぐに遊べます。気になったものから、ぜひ遊んでみてください。"
       />
@@ -22,6 +23,7 @@ export default function GamesPage() {
         </div>
       </div>
       <CtaBand
+        en="CONTACT"
         title="感想や、遊んでみたい企画を教えてください。"
         text="いただいた声は、次の作品づくりに活かします。"
         href="/contact"

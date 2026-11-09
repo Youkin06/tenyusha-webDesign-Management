@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import PageHeading from "@/components/PageHeading";
+import SectionHeading from "@/components/SectionHeading";
 import CtaBand from "@/components/CtaBand";
 import Logo from "@/components/Logo";
 import styles from "./page.module.css";
@@ -30,6 +31,7 @@ export default function AboutPage() {
   return (
     <>
       <PageHeading
+        en="COMPANY"
         title="会社概要"
         lead="天遊社は、夜空を見上げたときのような、自由で大きな遊び心をゲームで届けるために生まれたスタジオです。"
       />
@@ -39,10 +41,11 @@ export default function AboutPage() {
           <Logo size={140} />
         </div>
         <div>
-          <h2 className="section-title">天に遊ぶ。</h2>
+          <SectionHeading en="MISSION" ja="理念" />
+          <p className={styles.missionCopy}>『天に遊ぶ。』</p>
           <p>
             社名の「天遊」には、空のように果てのない場所で、思いきり遊んでほしいという願いを込めました。
-            ロゴは朱色の落款（はんこ）に、ドットで描いた三日月と星を収めたものです。
+            ロゴは夜空色の落款（はんこ）に、ドットで描いた三日月と、桜色の星を収めたものです。
             和の落ち着きと、ゲームのわくわくを一緒に届けたいと考えています。
           </p>
           <p>
@@ -52,7 +55,7 @@ export default function AboutPage() {
       </section>
 
       <section className={`container ${styles.section}`}>
-        <h2 className="section-title">基本情報</h2>
+        <SectionHeading en="PROFILE" ja="基本情報" />
         <dl className={styles.table}>
           {profile.map((row) => (
             <div key={row.label}>
@@ -64,7 +67,7 @@ export default function AboutPage() {
       </section>
 
       <section className={`container ${styles.section}`}>
-        <h2 className="section-title">あゆみ</h2>
+        <SectionHeading en="HISTORY" ja="あゆみ" />
         <ol className={styles.timeline}>
           {history.map((item) => (
             <li key={item.date}>
@@ -76,6 +79,7 @@ export default function AboutPage() {
       </section>
 
       <CtaBand
+        en="GAMES"
         title="天遊社のゲームを遊んでみる"
         text="ブラウザですぐに遊べる作品をそろえています。"
         href="/games"

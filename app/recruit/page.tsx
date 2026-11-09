@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import PageHeading from "@/components/PageHeading";
+import SectionHeading from "@/components/SectionHeading";
 import CtaBand from "@/components/CtaBand";
 import SelectionFlow from "@/components/SelectionFlow";
 import { CONTACT_FORM_URL } from "@/lib/site";
@@ -29,12 +30,13 @@ export default function RecruitPage() {
   return (
     <>
       <PageHeading
+        en="RECRUIT"
         title="採用"
         lead="天遊社は、つくることが好きな仲間を探しています。経験の長さよりも、自分で最後までつくった作品を大切にします。"
       />
 
       <section className="container">
-        <h2 className="section-title">募集している職種</h2>
+        <SectionHeading en="POSITIONS" ja="募集している職種" />
         <ul className={styles.positions}>
           {positions.map((p) => (
             <li key={p.title}>
@@ -52,7 +54,7 @@ export default function RecruitPage() {
       </section>
 
       <section className={`container ${styles.section}`}>
-        <h2 className="section-title">選考の流れ</h2>
+        <SectionHeading en="FLOW" ja="選考の流れ" />
         <p className={styles.flowLead}>
           作品を見ながら話すことを大切にしています。最後は、実際に一緒にゲームを1本つくってみます。
         </p>
@@ -60,6 +62,7 @@ export default function RecruitPage() {
       </section>
 
       <CtaBand
+        en="ENTRY"
         title="エントリーはこちらから"
         text="フォームに、作品のURLと簡単な自己紹介を書いて送ってください。"
         href={CONTACT_FORM_URL}

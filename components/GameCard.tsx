@@ -37,9 +37,9 @@ export default function GameCard({ game, detail = false }: { game: Game; detail?
           </dl>
         </>
       )}
-      <a className={`text-link ${styles.play}`} href={game.play.href} target="_blank" rel="noopener noreferrer">
+      <a className={styles.play} href={game.play.href} target="_blank" rel="noopener noreferrer">
         {game.play.label}
-        <span aria-hidden="true">↗</span>
+        <span className="arrow" aria-hidden="true">↗</span>
         <span className={styles.srOnly}>（外部サイトが新しいタブで開きます）</span>
       </a>
     </article>

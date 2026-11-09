@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import PageHeading from "@/components/PageHeading";
+import SectionHeading from "@/components/SectionHeading";
 import { CONTACT_FORM_URL } from "@/lib/site";
 import styles from "./page.module.css";
 
@@ -29,6 +30,7 @@ export default function ContactPage() {
   return (
     <>
       <PageHeading
+        en="CONTACT"
         title="お問い合わせ"
         lead="ゲームの感想、取材や展示のご相談、採用へのエントリーなど、お気軽にご連絡ください。"
       />
@@ -53,7 +55,7 @@ export default function ContactPage() {
       </section>
 
       <section className={`container ${styles.section}`}>
-        <h2 className="section-title">よくある質問</h2>
+        <SectionHeading en="FAQ" ja="よくある質問" />
         <div className={styles.faq}>
           {faqs.map((item) => (
             <details key={item.q}>
@@ -65,7 +67,7 @@ export default function ContactPage() {
       </section>
 
       <section className={`container ${styles.section}`}>
-        <h2 className="section-title">アクセス</h2>
+        <SectionHeading en="ACCESS" ja="アクセス" />
         <dl className={styles.access}>
           <div>
             <dt>所在地</dt>

@@ -2,15 +2,16 @@
   position: sticky;
   top: 0;
   z-index: 50;
-  background: rgba(23, 24, 75, 0.85);
-  backdrop-filter: blur(10px);
+  background: var(--white);
+  border-bottom: 1px solid var(--line);
 }
 
 .inner {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 68px;
+  height: 72px;
+  padding: 0 32px;
 }
 
 .brand {
@@ -21,67 +22,109 @@
 }
 
 .name {
+  display: flex;
+  flex-direction: column;
   font-family: var(--font-brush), serif;
-  font-size: 24px;
-  letter-spacing: 0.1em;
+  font-size: 22px;
+  line-height: 1.1;
+  letter-spacing: 0.12em;
+}
+
+.nameEn {
+  font-family: var(--font-pixel), monospace;
+  font-size: 9px;
+  letter-spacing: 0.2em;
 }
 
 .nav ul {
   display: flex;
+  align-items: center;
   gap: 36px;
   list-style: none;
   margin: 0;
   padding: 0;
 }
 
-.link {
-  position: relative;
-  display: block;
-  padding: 6px 0;
-  font-size: 14px;
+.link,
+.contact {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   text-decoration: none;
+  line-height: 1.3;
 }
 
-/* 今いるページには、桜色の小さな点を付ける */
-.link[aria-current="page"]::after {
-  content: "";
-  position: absolute;
-  left: 50%;
-  bottom: -4px;
-  width: 4px;
-  height: 4px;
-  margin-left: -2px;
-  background: var(--toki);
+.en {
+  font-family: var(--font-pixel), monospace;
+  font-size: 14px;
+  letter-spacing: 0.08em;
 }
 
-.link:hover {
-  color: #fff;
+.ja {
+  font-size: 10px;
+  color: var(--kachi);
+}
+
+/* 今いるページ・カーソルを乗せたページには、下に桜色の線 */
+.link {
+  padding: 4px 0;
+  border-bottom: 2px solid transparent;
+}
+
+.link:hover,
+.link[aria-current="page"] {
+  border-bottom-color: var(--toki);
+}
+
+.contact {
+  padding: 6px 18px;
+  border: 1px solid var(--tetsukon);
+  transition: background 0.2s, color 0.2s;
+}
+
+.contact:hover,
+.contact[aria-current="page"] {
+  background: var(--tetsukon);
+  color: var(--white);
+}
+
+.contact:hover .ja,
+.contact[aria-current="page"] .ja {
+  color: var(--geppaku);
 }
 
 .menuButton {
   display: none;
 }
 
-/* スマホ：メニューボタンで開閉する縦並びのメニュー */
-@media (max-width: 760px) {
+/* スマホ：メニューボタンで開閉する、画面いっぱいのメニュー */
+@media (max-width: 860px) {
+  .inner {
+    height: 64px;
+    padding: 0 var(--gutter);
+  }
+
   .menuButton {
     display: flex;
     align-items: center;
     gap: 10px;
     background: none;
     border: 0;
-    color: var(--geppaku);
+    color: var(--tetsukon);
     padding: 8px 0;
-    font: inherit;
-    font-size: 13px;
     cursor: pointer;
+  }
+
+  .menuText {
+    font-family: var(--font-pixel), monospace;
+    font-size: 13px;
   }
 
   .menuIcon,
   .menuIcon::before {
     display: block;
-    width: 18px;
-    height: 1px;
+    width: 20px;
+    height: 2px;
     background: currentColor;
     transition: transform 0.2s;
   }
@@ -109,12 +152,12 @@
   .nav {
     display: none;
     position: absolute;
-    top: 68px;
+    top: 64px;
     left: 0;
     right: 0;
-    background: var(--tetsukon);
-    border-bottom: 1px solid var(--line);
-    padding: 8px var(--gutter) 24px;
+    height: calc(100svh - 64px);
+    background: var(--white);
+    padding: 16px var(--gutter);
   }
 
   .nav[data-open="true"] {
@@ -123,19 +166,36 @@
 
   .nav ul {
     flex-direction: column;
+    align-items: stretch;
     gap: 0;
   }
 
-  .link {
-    padding: 16px 0;
-    font-size: 16px;
+  .link,
+  .contact {
+    flex-direction: row;
+    align-items: baseline;
+    gap: 16px;
+    padding: 20px 4px;
+    border: 0;
     border-bottom: 1px solid var(--line);
   }
 
-  .link[aria-current="page"]::after {
-    left: auto;
-    right: 0;
-    bottom: 50%;
-    margin: 0 0 -2px;
+  .en {
+    font-size: 22px;
+  }
+
+  .ja {
+    font-size: 13px;
+  }
+
+  .contact {
+    margin-top: 24px;
+    justify-content: center;
+    background: var(--tetsukon);
+    color: var(--white);
+  }
+
+  .contact .ja {
+    color: var(--geppaku);
   }
 }
