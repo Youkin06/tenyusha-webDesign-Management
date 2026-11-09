@@ -134,11 +134,9 @@
   text-decoration: underline;
 }
 
-/* ---------- 看板タイトル（白練の帯） ---------- */
+/* ---------- 看板タイトル ---------- */
 .gamesBand {
   margin-top: 140px;
-  padding: 100px 0 112px;
-  background: var(--shironeri);
 }
 
 /* 1本目を大きく、残りを右に縦に並べる。同じ大きさのカード3枚にしない */
@@ -257,9 +255,6 @@
     grid-column: 1 / -1;
   }
 
-  .gamesBand {
-    padding: 72px 0 80px;
-  }
 }
 
 /* 点滅（CSSモジュールではアニメーション名がファイルごとに変わるので、ここでも定義する） */

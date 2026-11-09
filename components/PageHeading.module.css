@@ -1,8 +1,8 @@
-/* 白練の帯に、ドットの星をいくつか置く */
+/* 白い背景に、ドットの星をいくつか置き、下に細い線を引く */
 .heading {
   padding: 32px 0 72px;
   margin-bottom: 96px;
-  background-color: var(--shironeri);
+  border-bottom: 1px solid var(--line);
   background-image:
     linear-gradient(var(--tetsukon), var(--tetsukon)),
     linear-gradient(var(--toki), var(--toki)),

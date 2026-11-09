@@ -1,8 +1,11 @@
 .band {
   margin-top: 140px;
-  padding: 88px 0;
-  /* 白練の帯に、ドットの花びらをいくつか置く */
-  background-color: var(--shironeri);
+}
+
+/* 上に細い線を引き、右側にドットの花びらをいくつか置く */
+.inner {
+  padding-top: 72px;
+  border-top: 1px solid var(--line);
   background-image:
     linear-gradient(var(--toki), var(--toki)),
     linear-gradient(var(--toki), var(--toki)),
@@ -11,9 +14,6 @@
   background-size: 8px 8px, 6px 6px, 6px 6px, 4px 4px;
   background-position: 80% 22%, 90% 64%, 66% 80%, 58% 30%;
   background-repeat: no-repeat;
-}
-
-.inner {
   display: flex;
   justify-content: space-between;
   align-items: flex-end;

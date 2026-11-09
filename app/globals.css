@@ -1,14 +1,13 @@
 /*
   配色：白をベースに、日本の伝統色で文字とアクセントをつくる。
   面積の比率はおよそ 70（ベース）: 25（メイン）: 5（アクセント）。
-    ベース     白 / 白練 #f3f3f2 … ページの背景。白練は区切りの帯
+    ベース     白                 … ページの背景。区切りは余白と細い線だけにし、灰色の帯は使わない
     メイン     鉄紺 #17184b       … 文字、ボタン、ヒーローとフッターの夜空
     アクセント 鴇色 #f4b3c2       … 島の桜の色。見出しの小さな四角など、ごく一部だけ
   文字の濃淡は、鉄紺と褐色（かちいろ）でつくり、色数を増やさない。
 */
 :root {
   --white: #ffffff;
-  --shironeri: #f3f3f2;
   --tetsukon: #17184b;
   --tetsukon-deep: #0e0f33;
   --tetsukon-light: #222463;
@@ -63,7 +62,8 @@ p {
 
 /* 課題の実習表示（全ページ冒頭） */
 .practice-notice {
-  background: var(--shironeri);
+  background: var(--white);
+  border-bottom: 1px solid var(--line);
   color: var(--kachi);
   font-size: 12px;
   text-align: center;
