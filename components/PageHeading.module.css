@@ -1,16 +1,8 @@
-/* 白い背景に、ドットの星をいくつか置き、下に細い線を引く */
+/* 下に細い線を引いて、本文と区切る */
 .heading {
   padding: 32px 0 72px;
   margin-bottom: 96px;
   border-bottom: 1px solid var(--line);
-  background-image:
-    linear-gradient(var(--tetsukon), var(--tetsukon)),
-    linear-gradient(var(--toki), var(--toki)),
-    linear-gradient(var(--fujinezu), var(--fujinezu)),
-    linear-gradient(var(--tetsukon), var(--tetsukon));
-  background-size: 8px 8px, 8px 8px, 6px 6px, 4px 4px;
-  background-position: 86% 34%, 78% 58%, 92% 70%, 70% 26%;
-  background-repeat: no-repeat;
 }
 
 .breadcrumb ol {

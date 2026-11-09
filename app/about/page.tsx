@@ -41,7 +41,7 @@ export default function AboutPage() {
           <Logo size={140} />
         </div>
         <div>
-          <SectionHeading en="MISSION" ja="理念" />
+          <SectionHeading ja="理念" />
           <p className={styles.missionCopy}>『天に遊ぶ。』</p>
           <p>
             社名の「天遊」には、空のように果てのない場所で、思いきり遊んでほしいという願いを込めました。
@@ -55,7 +55,7 @@ export default function AboutPage() {
       </section>
 
       <section className={`container ${styles.section}`}>
-        <SectionHeading en="PROFILE" ja="基本情報" />
+        <SectionHeading ja="基本情報" />
         <dl className={styles.table}>
           {profile.map((row) => (
             <div key={row.label}>
@@ -67,7 +67,7 @@ export default function AboutPage() {
       </section>
 
       <section className={`container ${styles.section}`}>
-        <SectionHeading en="HISTORY" ja="あゆみ" />
+        <SectionHeading ja="あゆみ" />
         <ol className={styles.timeline}>
           {history.map((item) => (
             <li key={item.date}>

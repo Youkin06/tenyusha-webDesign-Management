@@ -36,7 +36,7 @@ export default function RecruitPage() {
       />
 
       <section className="container">
-        <SectionHeading en="POSITIONS" ja="募集している職種" />
+        <SectionHeading ja="募集している職種" />
         <ul className={styles.positions}>
           {positions.map((p) => (
             <li key={p.title}>
@@ -54,7 +54,7 @@ export default function RecruitPage() {
       </section>
 
       <section className={`container ${styles.section}`}>
-        <SectionHeading en="FLOW" ja="選考の流れ" />
+        <SectionHeading ja="選考の流れ" />
         <p className={styles.flowLead}>
           作品を見ながらお話しすることを大切にしています。最後に、小さな実技課題に取り組んでいただきます。
         </p>

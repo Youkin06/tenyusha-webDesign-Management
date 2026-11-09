@@ -2,18 +2,10 @@
   margin-top: 140px;
 }
 
-/* 上に細い線を引き、右側にドットの花びらをいくつか置く */
+/* 上に細い線を引いて、前のセクションと区切る */
 .inner {
   padding-top: 72px;
   border-top: 1px solid var(--line);
-  background-image:
-    linear-gradient(var(--toki), var(--toki)),
-    linear-gradient(var(--toki), var(--toki)),
-    linear-gradient(var(--fujinezu), var(--fujinezu)),
-    linear-gradient(var(--tetsukon), var(--tetsukon));
-  background-size: 8px 8px, 6px 6px, 6px 6px, 4px 4px;
-  background-position: 80% 22%, 90% 64%, 66% 80%, 58% 30%;
-  background-repeat: no-repeat;
   display: flex;
   justify-content: space-between;
   align-items: flex-end;

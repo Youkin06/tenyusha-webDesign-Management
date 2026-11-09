@@ -55,7 +55,7 @@ export default function ContactPage() {
       </section>
 
       <section className={`container ${styles.section}`}>
-        <SectionHeading en="FAQ" ja="よくある質問" />
+        <SectionHeading ja="よくある質問" />
         <div className={styles.faq}>
           {faqs.map((item) => (
             <details key={item.q}>
@@ -67,7 +67,7 @@ export default function ContactPage() {
       </section>
 
       <section className={`container ${styles.section}`}>
-        <SectionHeading en="ACCESS" ja="アクセス" />
+        <SectionHeading ja="アクセス" />
         <dl className={styles.access}>
           <div>
             <dt>所在地</dt>
