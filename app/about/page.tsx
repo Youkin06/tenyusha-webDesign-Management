@@ -13,16 +13,16 @@ const profile = [
   { label: "設立", value: "2026年4月（架空）" },
   { label: "代表", value: "Yohei Yaoi" },
   { label: "所在地", value: "〒000-0000 天遊県星見市月見町1-1（架空）" },
-  { label: "事業内容", value: "自社ゲームの企画・開発・公開／ゲームジャム・展示イベントへの参加" },
+  { label: "事業内容", value: "自社ゲームの企画・開発・配信" },
   { label: "主な開発環境", value: "Unity、Blender、Python（Pyxel）" },
 ];
 
 // これまでの作品づくりの歩み（年月は実際の制作時期）
 const history = [
   { date: "2023年3月", text: "CIRCUSAL を Google Play でリリース。はじめてストアに並んだタイトル" },
-  { date: "2024年10月", text: "DEPTH DIARY が完成。7か月かけた、はじめての長編" },
+  { date: "2024年10月", text: "スマートフォン向けアドベンチャー DEPTH DIARY をリリース" },
   { date: "2025年6月", text: "ぼくのにっき を公開。イラストをすべて手描きしたホラーゲーム" },
-  { date: "2025年7月", text: "スライムスライス を公開。はじめての3Dカジュアルゲーム" },
+  { date: "2025年7月", text: "3Dカジュアルゲーム スライムスライス を公開" },
   { date: "2026年2月", text: "KamoRogue が完成。Python と Pyxel で、ドット絵から音楽までつくる" },
   { date: "2026年4月", text: "天遊社 設立（架空）" },
 ];

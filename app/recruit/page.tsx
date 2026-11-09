@@ -56,7 +56,7 @@ export default function RecruitPage() {
       <section className={`container ${styles.section}`}>
         <SectionHeading en="FLOW" ja="選考の流れ" />
         <p className={styles.flowLead}>
-          作品を見ながら話すことを大切にしています。最後は、実際に一緒にゲームを1本つくってみます。
+          作品を見ながらお話しすることを大切にしています。最後に、小さな実技課題に取り組んでいただきます。
         </p>
         <SelectionFlow />
       </section>

@@ -71,8 +71,8 @@ export default function Home() {
           <p className={styles.mission}>『天に遊ぶ。』</p>
           <p className={styles.aboutText}>
             天遊社は、夜空を見上げたときのような、自由で大きな遊び心をゲームで届けるスタジオです。
-            ドット絵も3Dモデルも自分たちの手でつくり、2日間のゲームジャムから半年かけた長編まで、
-            まず遊べる形にして、遊びながら面白さを磨いています。
+            ドット絵も3Dモデルも自分たちの手でつくり、
+            まず遊べる形にしてから、遊びながら面白さを磨いています。
           </p>
           <Link href="/about" className="btn">
             会社概要を見る
@@ -101,7 +101,7 @@ export default function Home() {
       <CtaBand
         en="RECRUIT"
         title="次の一本を、一緒に。"
-        text="ゲームジャムに出たことがある人、ドット絵を描いている人。天遊社は、つくる仲間を探しています。"
+        text="ドット絵を描く人、操作の気持ちよさにこだわる人。天遊社は、一緒にゲームをつくる仲間を探しています。"
         href="/recruit"
         label="採用情報を見る"
       />
